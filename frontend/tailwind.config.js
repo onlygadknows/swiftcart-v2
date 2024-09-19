@@ -4,7 +4,16 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],  theme: {
-    extend: {},
+    extend: {
+      colors: {
+      primary: '#EEF0F2',
+      secondary: '#EEC643',
+      tertiary: '#000100',
+      },
+      fontFamily: {
+        'poppins': ['Poppins',]
+      }
+    },
   },
   plugins: [],
 }
