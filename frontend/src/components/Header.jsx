@@ -11,9 +11,11 @@ const Header = () => {
           {/* Left-side nav links */}
           <ul className="flex items-center space-x-4">
             <li>
+              <Link to="/">
               <a href="#" className="font-poppins uppercase font-semibold">
                 Home
               </a>
+              </Link>
             </li>
             <li>
               <a href="#" className="font-poppins uppercase font-semibold">
