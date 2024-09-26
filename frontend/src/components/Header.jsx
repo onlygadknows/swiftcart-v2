@@ -10,25 +10,19 @@ const Header = () => {
         <div className="mx-auto max-w-7x1 py-5 flex items-center justify-between max-w-2xl px-16 sm:px-24 lg:max-w-7xl lg:px-8">
           {/* Left-side nav links */}
           <ul className="flex items-center space-x-4">
-            <li>
-              <Link to="/">
-              <a href="#" className="font-poppins uppercase font-semibold">
-                Home
-              </a>
-              </Link>
+            <li className="font-poppins uppercase font-semibold">
+              <Link to="/">Home</Link>
             </li>
-            <li>
-              <a href="#" className="font-poppins uppercase font-semibold">
-                Shop
-              </a>
-            </li>
+            <li className="font-poppins uppercase font-semibold">
+              Shop
+              </li>
           </ul>
 
           {/* Center logo (remains fixed in the center) */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
-          <Link to='/'>
-          <img className="w-12 h-12" src={logo} alt="logo" />
-          </Link>
+            <Link to="/">
+              <img className="w-12 h-12" src={logo} alt="logo" />
+            </Link>
           </div>
 
           {/* Right-side nav links */}
@@ -48,18 +42,18 @@ const Header = () => {
 
           {/* Mobile view */}
           <div className="sm:hidden" id="mobile-menu">
-          <ul className="flex items-center space-x-4">
-            <li>
-              <a href="#" className="font-poppins uppercase font-semibold">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="font-poppins uppercase font-semibold">
-                Shop
-              </a>
-            </li>
-          </ul>
+            <ul className="flex items-center space-x-4">
+              <li>
+                <a href="#" className="font-poppins uppercase font-semibold">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" className="font-poppins uppercase font-semibold">
+                  Shop
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
