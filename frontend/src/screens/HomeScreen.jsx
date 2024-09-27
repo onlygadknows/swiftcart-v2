@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "../components/Product.jsx";
-
+import { Link } from "react-router-dom";
 const HomeScreen = () => {
   const [products, setProducts] = useState([]);
 
@@ -21,7 +21,13 @@ const HomeScreen = () => {
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
-            <Product product={product} products={products} />
+            <Link
+              key={product._id}
+              to={`/product/${product._id}`}
+              className="group"
+            >
+              <Product product={product} />
+            </Link>
           ))}
         </div>
       </div>

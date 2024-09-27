@@ -1,15 +1,18 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   return (
-    <div className='bg-black p-5'>
-          <div className="text-center text-primary font-poppins">Swift Cart v2.0 - Gad Ashell Sususco</div>
-          <div className="text-center text-primary font-poppins">{currentYear} All rights reserved.</div>
-
+    <div className="bg-black p-5">
+      <div className="text-center text-primary font-poppins">
+        Swift Cart v2.0 - Gad Ashell Sususco
+      </div>
+      <div className="text-center text-primary font-poppins">
+        {currentYear} All rights reserved.
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
