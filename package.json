@@ -13,10 +13,12 @@
   "author": "Gad Ashell Sususco",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.0"
   },
   "devDependencies": {
     "concurrently": "^9.0.1",
+    "dotenv": "^16.4.5",
     "nodemon": "^3.1.7"
   }
 }
