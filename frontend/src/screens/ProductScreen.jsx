@@ -1,9 +1,19 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import products from "../products.js";
+import axios from "axios";
 
 const ProductScreen = () => {
+  const [product, setProduct] = useState({});
   const { id: productId } = useParams();
-  const product = products.find((p) => p._id === productId);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get(`http://localhost:8000/api/products/${productId}`);
+      setProduct(data);
+    };
+
+    fetchProducts();
+  }, [productId]);
+  
   return (
     <div className="min-h-screen h-auto mx-auto max-w-2xl px-4 sm:px-6 sm:flex sm:justify-between sm:flex-col sm:gap-2 md:gap-1 lg:grid-rows-1 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-5">
       <div className="col-start-1 flex items-center justify-center sm:mt-5 lg:mt-0">
