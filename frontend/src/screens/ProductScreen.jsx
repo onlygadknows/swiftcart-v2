@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { MdAddShoppingCart } from "react-icons/md";
+
 import axios from "axios";
 
 const ProductScreen = () => {
@@ -18,7 +20,7 @@ const ProductScreen = () => {
   }, [productId]);
 
   return (
-    <div className="w-full min-h-screen flex">
+    <div className="w-full flex">
       <div className="h-auto mx-auto max-w-2xl px-4 sm:px-6 sm:flex sm:justify-between sm:flex-col sm:gap-2 md:gap-1 lg:grid-rows-1 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-5">
         <div
           key={product._id}
@@ -30,25 +32,25 @@ const ProductScreen = () => {
           <h1 className="font-bold uppercase text-xl">{product.name}</h1>
           <p className="text-poppins italic pt-5">{product.description}</p>
 
-          <div className="h-auto w-full flex align-center justify-between mt-5 gap-5 md:pb-10">
+          <div className="h-auto w-full flex flex-col md:flex-row align-center justify-between mt-5 gap-5 md:pb-10">
             <div className="flex align-center justify-center flex-col">
-              <p className="font-semibold text-orange-400 text-lg">
+              <p className="font-semibold text-orange-400 text-lg text-center md:text-left">
                 Price &#8369; {product.price}
               </p>
-              <p className="font-semibold text-black">
+              <p className="font-semibold text-black text-center md:text-left">
                 {product.numReviews} reviews
               </p>
             </div>
             <button
               type="button"
-              className="text-blue-500 font-poppins bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-10 py-5 text-center inline-flex items-center dark:focus:ring-gray-500 me-2 mb-2"
+              className="bg-blue-500 font-poppins text-gray-100 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-10 py-5 text-center flex items-center justify-center dark:focus:ring-gray-500 me-2 mb-2"
               disabled={product.countInStock === 0}
             >
+              <MdAddShoppingCart className="mr-2" />
               Add to Cart
             </button>
-            <div className="flex align-center justify-center flex-col">
+            <div className="flex align-center justify-center flex-col text-center md:text-left">
               <span className="font-semibold font-poppins">
-                {" "}
                 {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
               </span>
               <p className="font-poppins">
@@ -57,9 +59,9 @@ const ProductScreen = () => {
                   className={
                     product.countInStock > 0
                       ? product.countInStock < 4
-                        ? "text-red-500" // If less than 3, use red
-                        : "text-blue-500" // If 3 or more, use black
-                      : "text-gray-500" // If out of stock, use gray
+                        ? "text-red-500"
+                        : "text-blue-500"
+                      : "text-gray-500"
                   }
                 >
                   {product.countInStock} piece/s left
