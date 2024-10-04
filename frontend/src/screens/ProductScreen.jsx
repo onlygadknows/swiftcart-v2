@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { MdAddShoppingCart } from "react-icons/md";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
-import { ColorRing } from 'react-loader-spinner'
+import { ColorRing } from "react-loader-spinner";
+import ProductLoader from "../components/ProductLoader";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -12,23 +13,9 @@ const ProductScreen = () => {
   } = useGetProductDetailsQuery(productId);
 
   return (
-    <div className="w-full flex">
+    <div className="w-full">
       {isLoading ? (
-        <div className="w-full h-full flex justify-center items-center">
-        <ColorRing
-          height="100"
-          width="100"
-          radius="9"
-          color="green"
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }} // Correctly formatted
-          wrapperClass="loading-wrapper" // Optional: add a class name if needed
-        />
-      </div>
+      <ProductLoader />
       ) : error ? (
         <div>{error?.data?.message || error.error}</div>
       ) : (
@@ -37,7 +24,7 @@ const ProductScreen = () => {
             key={product._id}
             className="col-start-1 flex items-center justify-center sm:mt-5 lg:mt-0 p-5"
           >
-            <img src={product.image} alt={product.name} draggable="false" />
+            <img src={product.image} alt={product.name} draggable="false"  className="lg:h-[600px] rounded-lg" />
           </div>
           <div className="col-start-2 flex flex-col justify-center bg-slate-100 rounded-md shadow-inner p-10">
             <h1 className="font-bold uppercase text-xl">{product.name}</h1>
@@ -83,7 +70,9 @@ const ProductScreen = () => {
           </div>
         </div>
       )}
+
     </div>
+    
   );
 };
 
