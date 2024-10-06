@@ -7,8 +7,8 @@ export const updateCart = (state) => {
     state.itemsPrice = addDecimals(
         state.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
       );
+      
       // calculate shipping price ( if order is over 1000 then free, else 119 pesos)
-
       state.shippingPrice = addDecimals(state.itemsPrice > 1000 ? 0 : 119);
 
       // calculate tax price

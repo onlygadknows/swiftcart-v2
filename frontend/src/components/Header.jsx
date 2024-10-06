@@ -1,27 +1,29 @@
 import logo from "../assets/image/swift.png";
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
-import { LuShoppingCart } from "react-icons/lu";
+import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
-
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("home");
+  const { cartItems } = useSelector((state) => state.cart);
+
   return (
     <header>
       <nav>
         <div className="mx-auto max-w-7x1 py-5 flex items-center justify-between max-w-2xl px-5 lg:max-w-7xl lg:px-8">
           {/* Left-side nav links */}
           <ul className="hidden md:flex items-center gap-5">
-            <li className="font-poppins uppercase font-semibold">
-              <Link className="text-gray-700 hover:text-black" to="/">
+            <li className="font-lora uppercase font-bold">
+              <Link className="text-gray-700 hover:text-black transition" to="/">
                 Home
               </Link>
             </li>
-            <li className="font-poppins uppercase font-semibold">
+            <li className="font-lora uppercase font-bold transition">
               {" "}
               <Link className="text-gray-700 hover:text-black" to="/">
                 Shop
@@ -44,22 +46,38 @@ const Header = () => {
           {/* Right-side nav links */}
           <ul className="relative hidden md:flex items-center gap-7">
             <li>
-              <Link to="#" className="font-poppins  uppercase">
+              <Link to="#" className="font-poppins transition uppercase">
                 {" "}
                 <CgProfile className="w-6 h-6 text-gray-700 hover:text-black" />
               </Link>
             </li>
             <li>
-              <Link to="#" className="font-poppins uppercase">
-                <LuShoppingCart className="w-6 h-6 text-gray-700 hover:text-black" />
+              <Link to="/cart" className="font-poppins transition uppercase relative ">
+                {cartItems.length > 0 && (
+                  <>
+                    <div className="t-0 absolute left-4 bottom-3 animate-bounce">
+                      <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
+                        {cartItems.reduce((a, c) => a + c.qty, 0)}
+                      </p>
+                    </div>
+                  </>
+                )}
+                <MdOutlineShoppingCart className="w-6 h-6 text-gray-700 hover:text-black" />
               </Link>
             </li>
           </ul>
 
           {/* Mobile view */}
           <div className="md:hidden flex items-center justify-center gap-5">
-            <Link to="/" className="font-poppins uppercase">
-              <LuShoppingCart className="w-6 h-6 text-gray-700 hover:text-black" />
+            <Link to="/cart" className="font-poppins uppercase relative">
+              {cartItems.length > 0 && (
+                  <div className="t-0 absolute left-4 bottom-3 animate-bounce">
+                    <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-600 p-2 text-xs text-white">
+                      {cartItems.reduce((a, c) => a + c.qty, 0)}
+                    </p>
+                  </div>
+              )}
+              <MdOutlineShoppingCart  className="w-6 h-6 text-gray-700 hover:text-black" />
             </Link>
             {isMenuOpen ? (
               <button
