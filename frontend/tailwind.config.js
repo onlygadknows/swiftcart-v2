@@ -11,7 +11,8 @@ export default {
       tertiary: '#000100',
       },
       fontFamily: {
-        'poppins': ['Poppins',]
+        'poppins': ['Poppins',],
+        'lora': ['Lora']
       }
     },
   },
