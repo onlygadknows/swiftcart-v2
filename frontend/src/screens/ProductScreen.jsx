@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../slices/cartSlice";
 import ProductLoader from "../components/ProductLoader";
 import Rating from "../components/Rating";
+import Message from "../components/Message";
 const ProductScreen = () => {
   const { id: productId } = useParams();
   const [qty, setQty] = useState(1);
@@ -31,7 +32,7 @@ const ProductScreen = () => {
       {isLoading ? (
         <ProductLoader />
       ) : error ? (
-        <div>{error?.data?.message || error.error}</div>
+        <Message variant="alert" message={error?.data?.message || error.error} />
       ) : (
         <div className="h-auto mx-auto max-w-2xl px-4 sm:px-6 sm:flex sm:justify-between sm:flex-col sm:gap-2 md:gap-1 lg:grid-rows-1 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-5">
           <div

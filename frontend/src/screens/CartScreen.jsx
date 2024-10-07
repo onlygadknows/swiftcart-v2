@@ -8,9 +8,10 @@ const CartScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   return (
-    <div>
-      <section className="bg-white py-8 antialiased">
-        <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <div className="bg-white min-h-screen">
+      {/* Shopping cart section */}
+      
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 sm:py-11 md:py-10 lg:max-w-7xl lg:px-8">
           <h2 className="text-xl font-semibold text-gray-900">
             Shopping Cart
           </h2>
@@ -156,8 +157,6 @@ const CartScreen = () => {
                     </div>
                   </div>
                 </div>
-                
-                
                 
               </div>
               <div className="hidiven xl:mt-8 xl:block">
@@ -320,8 +319,8 @@ const CartScreen = () => {
                     {" "}
                     or{" "}
                   </span>
-                  <a
-                    href="#"
+                  <Link
+                    to="/"
                     title=""
                     class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline"
                   >
@@ -341,7 +340,7 @@ const CartScreen = () => {
                         d="M19 12H5m14 0-4 4m4-4-4-4"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -374,7 +373,6 @@ const CartScreen = () => {
             </div>
           </div>
         </div>
-      </section>
     </div>
   );
 };
