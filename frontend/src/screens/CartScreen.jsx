@@ -10,12 +10,14 @@ const CartScreen = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Shopping cart section */}
-      
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 sm:py-11 md:py-10 lg:max-w-7xl lg:px-8">
-          <h2 className="text-xl font-semibold text-gray-900">
-            Shopping Cart
-          </h2>
 
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 sm:py-11 md:py-10 lg:max-w-7xl lg:px-8">
+        <h2 className="text-xl font-lora font-semibold text-gray-700">
+          Shopping Cart
+        </h2>
+        {cartItems.length === 0 ? (
+          <Message variant={alert} message="Your cart is empty! :(" />
+        ) : (
           <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
             <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
               <div className="space-y-6">
@@ -98,7 +100,7 @@ const CartScreen = () => {
                     <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
                       <a
                         href="#"
-                        className="text-base font-medium text-gray-900 hover:underline"
+                        className="text-base font-poppins text-gray-700 hover:underline"
                       >
                         PC system All in One APPLE iMac (2023) mqrq3ro/a, Apple
                         M3, 24" Retina 4.5K, 8GB, SSD 256GB, 10-core GPU,
@@ -157,10 +159,9 @@ const CartScreen = () => {
                     </div>
                   </div>
                 </div>
-                
               </div>
               <div className="hidiven xl:mt-8 xl:block">
-                <h3 className="text-2xl font-semibold text-gray-900">
+                <h3 className="text-2xl font-lora font-semibold text-gray-700">
                   People also bought
                 </h3>
                 <div className="mt-6 grid grid-cols-3 gap-4 sm:mt-8">
@@ -171,25 +172,27 @@ const CartScreen = () => {
                         src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg"
                         alt="imac image"
                       />
-                    
                     </a>
                     <div>
                       <a
                         href="#"
-                        className="text-lg font-semibold leading-tight text-gray-900 hover:underline "
+                        className="text-lg font-lora font-semibold text-gray-700 hover:underline "
                       >
                         iMac 27”
                       </a>
-                      <p className="mt-2 text-base font-normal text-gray-500">
+                      <p className="mt-2 text-base font-poppins text-gray-500">
                         This generation has some improvements, including a
                         longer continuous battery life.
                       </p>
                     </div>
                     <div>
                       <p className="text-lg font-bold text-gray-900 ">
-                        <span className="line-through"> $399,99 </span>
+                        <span className="line-through font-poppins font-semibold">
+                          {" "}
+                          $399,99{" "}
+                        </span>
                       </p>
-                      <p className="text-lg font-bold leading-tight text-red-600">
+                      <p className="text-lg font-semibold leading-tight text-red-600">
                         $299
                       </p>
                     </div>
@@ -254,54 +257,54 @@ const CartScreen = () => {
 
             <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
               <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
-                <p className="text-xl font-semibold text-gray-900">
+                <p className="text-xl font-lora font-semibold text-gray-700">
                   Order summary
                 </p>
 
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-4">
-                      <div className="text-base font-normal text-gray-500">
+                      <div className="text-base font-poppins text-gray-500">
                         Original price
                       </div>
-                      <div className="text-base font-medium text-gray-900">
+                      <div className="text-base font-poppins text-gray-700">
                         $7,592.00
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between gap-4">
-                      <div className="text-base font-normal text-gray-500">
+                      <div className="text-base font-poppins text-gray-500">
                         Savings
                       </div>
-                      <div className="text-base font-medium text-green-600">
+                      <div className="text-base font-poppins text-green-600">
                         -$299.00
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between gap-4">
-                      <div className="text-base font-normal text-gray-500 ">
+                      <div className="text-base font-poppins text-gray-500 ">
                         Store Pickup
                       </div>
-                      <div className="text-base font-medium text-gray-900">
+                      <div className="text-base font-poppins text-gray-700">
                         $99
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between gap-4">
-                      <div className="text-base font-normal text-gray-500">
+                      <div className="text-base font-poppins text-gray-500">
                         Tax
                       </div>
-                      <div className="text-base font-medium text-gray-900">
+                      <div className="text-base font-poppins text-gray-700">
                         $799
                       </div>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 ">
-                    <div className="text-base font-bold text-gray-900">
+                    <div className="text-base font-lora font-semibold text-gray-700">
                       Total
                     </div>
-                    <div className="text-base font-bold text-gray-900">
+                    <div className="text-base font-bold text-gray-700">
                       $8,191.00
                     </div>
                   </div>
@@ -315,10 +318,7 @@ const CartScreen = () => {
                 </a>
 
                 <div class="flex items-center justify-center gap-2">
-                  <span class="text-sm font-normal text-gray-500 ">
-                    {" "}
-                    or{" "}
-                  </span>
+                  <span class="text-sm font-normal text-gray-500 "> or </span>
                   <Link
                     to="/"
                     title=""
@@ -349,7 +349,7 @@ const CartScreen = () => {
                   <div>
                     <label
                       for="voucher"
-                      class="mb-2 block text-sm font-medium text-gray-900"
+                      class="mb-2 block text-xs font-poppins font-medium text-gray-700"
                     >
                       {" "}
                       Do you have a voucher or gift card?{" "}
@@ -372,7 +372,8 @@ const CartScreen = () => {
               </div>
             </div>
           </div>
-        </div>
+        )}
+      </div>
     </div>
   );
 };

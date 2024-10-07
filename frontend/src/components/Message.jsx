@@ -3,7 +3,7 @@ import React from "react";
 const Message = ({ variant, message }) => {
   return (
   
-     <div className="bg-red-50 border-s-4 border-red-500 p-4" role={variant} tabindex="-1" aria-labelledby="hs-bordered-red-style-label">
+     <div className="bg-red-50 mt-6 border-s-4 border-red-500 p-4" role={variant} tabindex="-1" aria-labelledby="hs-bordered-red-style-label">
      <div className="flex">
        <div className="shrink-0">
          <span className="inline-flex justify-center items-center size-8 rounded-full border-4 border-red-100 bg-red-200 text-red-800">
