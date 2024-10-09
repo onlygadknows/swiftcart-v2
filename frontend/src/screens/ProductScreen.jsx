@@ -58,12 +58,12 @@ const ProductScreen = () => {
               {/* left-column */}
               <div className="flex align-center flex-col gap-0 justify-between flex-1 border-2 rounded-md shadow-sm">
                 <div className="flex align-center justify-center flex-col">
-                  <p className="font-semibold text-orange-400 text-lg text-center">
-                    Price &#8369; {product.price}
+                  <p className="font-semibold text-green-600 text-xl text-center">
+                     &#8369;{product.price}
                   </p>
 
                   <div className="flex items-center justify-center flex-col">
-                    <p className="font-semibold text-gray-700 flex-1">
+                    <p className="text-gray-700 flex-1">
                       {product.numReviews} reviews
                     </p>
                     <span className="flex items-center justify-around flex-1">
@@ -115,15 +115,8 @@ const ProductScreen = () => {
                         <option disabled>Out of Stock</option> // Render out of stock as an option
                       )}
                     </select>
-                    <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-8">
-                      {/* Your SVG or other elements */}
-                    </div>
-
                     <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-8"></div>
                   </div>
-                  {/* <p className="text-sm text-red-600 mt-2">
-                    Please select a valid state.
-                  </p> */}
                 </div>
                 <button
                   type="button"
