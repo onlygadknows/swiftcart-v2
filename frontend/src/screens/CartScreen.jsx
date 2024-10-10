@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../slices/cartSlice";
+import { addToCart, addToFavorites, removeFromCart } from "../slices/cartSlice";
+import { MdFavorite } from "react-icons/md";
+import { MdFavoriteBorder } from "react-icons/md";
 
 const CartScreen = () => {
   const navigate = useNavigate();
@@ -19,14 +21,25 @@ const CartScreen = () => {
     );
   };
 
+  const addToFavoritesHandler = (product) => {
+    dispatch(
+      addToFavorites({
+        ...product,
+      })
+    );
+  };
+
   const removeFromCartHandler = async (id) => {
-    dispatch(removeFromCart(id))
-  }
+    dispatch(removeFromCart(id));
+  };
+
+  const checkOutHandler = () => {
+    navigate("/login?redirect=/shipping");
+  };
 
   return (
     <div className="bg-white min-h-screen">
       {/* Shopping cart section */}
-
       <div className="mx-auto max-w-2xl px-4 sm:px-6 sm:py-11 md:py-10 lg:max-w-7xl lg:px-8">
         <h2 className="text-xl font-lora font-semibold text-gray-700">
           Shopping Cart
@@ -111,21 +124,9 @@ const CartScreen = () => {
                           <button
                             type="button"
                             className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline"
+                            onClick={() => addToFavoritesHandler(item)}
                           >
-                            <svg
-                              className="me-1.5 h-5 w-5"
-                              xmlns="http://www.w3.org/2000/svg"
-                              widivh="24"
-                              height="24"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                stroke="currentColor"
-                                stroke-widivh="2"
-                                d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
-                              />
-                            </svg>
+                            <MdFavoriteBorder className="me-1.5 h-5 w-5" />
                             Adiv to Favorites
                           </button>
 
@@ -257,7 +258,7 @@ const CartScreen = () => {
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-500">
+                      <p className="text-base font-lora text-gray-700">
                         No. Item(s)
                       </p>
                       <p className="text-base font-poppins text-gray-700">
@@ -266,7 +267,7 @@ const CartScreen = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-500">
+                      <p className="text-base font-lora text-gray-700">
                         Items Price
                       </p>
                       <p className="text-base font-poppins text-gray-700">
@@ -274,7 +275,7 @@ const CartScreen = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-500">
+                      <p className="text-base font-lora text-gray-700">
                         Discount
                       </p>
                       <p className="text-base font-poppins text-green-600">
@@ -282,7 +283,7 @@ const CartScreen = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-500">
+                      <p className="text-base font-lora text-gray-700">
                         Shipping Price
                       </p>
                       <p className="text-base font-poppins text-gray-700">
@@ -291,9 +292,9 @@ const CartScreen = () => {
                     </div>
 
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-500 ">Tax</p>
+                      <p className="text-base font-lora text-gray-700 ">Tax</p>
                       <div className="text-base font-poppins text-gray-700">
-                        {cart.taxPrice}
+                        &#8369;{cart.taxPrice}
                       </div>
                     </div>
                   </div>
@@ -308,13 +309,13 @@ const CartScreen = () => {
                   </div>
                 </div>
 
-                <Link
-                  to="/"
+                <button
                   className="flex w-full border hover:border-gray-200 items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-poppins text-gray-700 hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300"
                   disabled={cartItems.length === 0}
+                  onClick={checkOutHandler}
                 >
                   Proceed to Checkout
-                </Link>
+                </button>
 
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-sm font-normal text-gray-500 ">

@@ -3,7 +3,7 @@ import { updateCart } from "../utils/cartUtils";
 
 const initialState = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
-  : { cartItems: [] };
+  : { cartItems: [], favItems: [] };
 
 const cartSlice = createSlice({
   name: "cart",
@@ -24,14 +24,30 @@ const cartSlice = createSlice({
 
       return updateCart(state);
     },
-    removeFromCart: (state, action) => {
-      state.cartItems = state.cartItems.filter((x) => x._id !== action.payload )
+    addToFavorites: (state, action) => {
+      const item = action.payload;
 
-      return updateCart(state)
-    }
+      const existItem = state.favItems.find((x) => x._id === item._id);
+
+      if (existItem) {
+        state.favItems = state.favItems.map((x) =>
+          x._id === existItem._id ? item : x
+        );
+      } else {
+        state.favItems = [...state.favItems, item];
+      }
+
+      return state;
+    },
+
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter((x) => x._id !== action.payload);
+
+      return updateCart(state);
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, addToFavorites, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
