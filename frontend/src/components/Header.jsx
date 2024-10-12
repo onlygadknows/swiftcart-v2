@@ -19,7 +19,10 @@ const Header = () => {
           {/* Left-side nav links */}
           <ul className="hidden md:flex items-center gap-5">
             <li className="font-lora uppercase font-bold">
-              <Link className="text-gray-700 hover:text-black transition" to="/">
+              <Link
+                className="text-gray-700 hover:text-black transition"
+                to="/"
+              >
                 Home
               </Link>
             </li>
@@ -46,13 +49,10 @@ const Header = () => {
           {/* Right-side nav links */}
           <ul className="relative hidden md:flex items-center gap-7">
             <li>
-              <Link to="#" className="font-poppins transition uppercase">
-                {" "}
-                <CgProfile className="w-6 h-6 text-gray-700 hover:text-black" />
-              </Link>
-            </li>
-            <li>
-              <Link to="/cart" className="font-poppins transition uppercase relative ">
+              <Link
+                to="/cart"
+                className="font-poppins transition uppercase relative "
+              >
                 {cartItems.length > 0 && (
                   <>
                     <div className="t-0 absolute left-4 bottom-3 animate-bounce">
@@ -65,19 +65,25 @@ const Header = () => {
                 <MdOutlineShoppingCart className="w-6 h-6 text-gray-700 hover:text-black" />
               </Link>
             </li>
+            <li>
+              <Link to="#" className="font-poppins transition uppercase">
+                {" "}
+                <CgProfile className="w-6 h-6 text-gray-700 hover:text-black" />
+              </Link>
+            </li>
           </ul>
 
           {/* Mobile view */}
           <div className="md:hidden flex items-center justify-center gap-5">
             <Link to="/cart" className="font-poppins uppercase relative">
               {cartItems.length > 0 && (
-                  <div className="t-0 absolute left-4 bottom-3 animate-bounce">
-                    <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-600 p-2 text-xs text-white">
-                      {cartItems.reduce((a, c) => a + c.qty, 0)}
-                    </p>
-                  </div>
+                <div className="t-0 absolute left-4 bottom-3 animate-bounce">
+                  <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-600 p-2 text-xs text-white">
+                    {cartItems.reduce((a, c) => a + c.qty, 0)}
+                  </p>
+                </div>
               )}
-              <MdOutlineShoppingCart  className="w-6 h-6 text-gray-700 hover:text-black" />
+              <MdOutlineShoppingCart className="w-6 h-6 text-gray-700 hover:text-black" />
             </Link>
             {isMenuOpen ? (
               <button
