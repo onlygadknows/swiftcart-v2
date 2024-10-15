@@ -34,7 +34,7 @@ const ProductScreen = () => {
       ) : error ? (
         <Message variant="alert" message={error?.data?.message || error.error} />
       ) : (
-        <div className="h-auto mx-auto max-w-2xl px-4 sm:px-6 sm:flex sm:justify-between sm:flex-col sm:gap-2 md:gap-1 lg:grid-rows-1 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-5">
+        <div className="mt-10 h-auto mx-auto max-w-2xl px-4 sm:px-6 sm:flex sm:justify-between sm:flex-col sm:gap-2 md:gap-1 lg:grid-rows-1 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-5">
           <div
             key={product._id}
             className="col-start-1 flex items-center justify-center sm:mt-5 lg:mt-0 p-5 border-2 rounded-md"

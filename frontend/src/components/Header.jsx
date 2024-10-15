@@ -66,7 +66,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="#" className="font-poppins transition uppercase">
+              <Link to="/register" className="font-poppins transition uppercase">
                 {" "}
                 <CgProfile className="w-6 h-6 text-gray-700 hover:text-black" />
               </Link>
