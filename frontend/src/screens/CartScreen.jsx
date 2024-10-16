@@ -53,20 +53,16 @@ const CartScreen = () => {
                 {cartItems.map((item) => (
                   <div
                     key={item._id}
-                    className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm "
+                    className="rounded-lg border-2 border-gray-200 bg-white p-4 shadow-sm "
                   >
                     <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
-                      <Link
-                        to={`/product/${item._id}`}
-                        className="shrink-0 md:order-1"
-                      >
+                      <Link to={`/product/${item._id}`} className="md:w-36 w-32 min-h-28 bg-cover">
                         <img
-                          className="h-20 w-20 bg-cover bg-center"
+                          className="md:w-36 h-28 w-32 hover:scale-110 transition"
                           src={item.image}
-                          alt="imac image"
+                          alt={item.name}
                         />
                       </Link>
-
                       <div className="flex items-center justify-between md:order-3 md:justify-end">
                         <div className="relative border-2 rounded-lg ">
                           <select
@@ -74,12 +70,16 @@ const CartScreen = () => {
                             onChange={(e) =>
                               addToCartHandler(item, Number(e.target.value))
                             }
-                            className="py-3 px-4 block rounded-lg text-sm font-poppins focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none"
+                            className="lg-24 sm:w-28 py-3 px-4 block rounded-lg text-sm font-poppins focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none"
                           >
                             {item.countInStock > 0 ? (
                               <>
-                                <option value="" disabled>
-                                  Select Quantity
+                                <option
+                                  className="text-center"
+                                  value=""
+                                  disabled
+                                >
+                                  Quantity
                                 </option>{" "}
                                 {/* Added value and disabled */}
                                 {[...Array(item.countInStock).keys()].map(
@@ -136,7 +136,7 @@ const CartScreen = () => {
                             onClick={() => removeFromCartHandler(item._id)}
                           >
                             <svg
-                              className="me-1.5 h-5 w-5"
+                              className="me-1.5 h-5 w-5 hover:animate-ping"
                               xmlns="http://www.w3.org/2000/svg"
                               widivh="24"
                               height="24"
@@ -162,7 +162,7 @@ const CartScreen = () => {
                   People also bought
                 </h3>
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:mt-8">
-                  <div className="space-y-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+                  <div className="space-y-6 overflow-hidden rounded-lg border-2 border-gray-200 bg-white p-6 shadow-sm">
                     <a href="#" className="overflow-hidden rounded">
                       <img
                         className="mx-auto h-44 w-auto max-w-full dark:hidiven"
@@ -250,7 +250,7 @@ const CartScreen = () => {
             </div>
 
             <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-              <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+              <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-4 shadow-sm sm:p-6">
                 <h1 className="text-xl font-lora font-semibold text-gray-700">
                   Order summary
                 </h1>
@@ -258,7 +258,7 @@ const CartScreen = () => {
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-700">
+                      <p className="text-base font-semibold font-lora text-gray-700">
                         No. Item(s)
                       </p>
                       <p className="text-base font-poppins text-gray-700">
@@ -267,7 +267,7 @@ const CartScreen = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-700">
+                      <p className="text-base font-semibold font-lora text-gray-700">
                         Items Price
                       </p>
                       <p className="text-base font-poppins text-gray-700">
@@ -275,7 +275,7 @@ const CartScreen = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-700">
+                      <p className="text-base font-semibold font-lora text-gray-700">
                         Discount
                       </p>
                       <p className="text-base font-poppins text-green-600">
@@ -283,7 +283,7 @@ const CartScreen = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-700">
+                      <p className="text-base font-semibold font-lora text-gray-700">
                         Shipping Price
                       </p>
                       <p className="text-base font-poppins text-gray-700">
@@ -292,7 +292,9 @@ const CartScreen = () => {
                     </div>
 
                     <div className="flex items-center justify-between gap-4">
-                      <p className="text-base font-lora text-gray-700 ">Tax</p>
+                      <p className="text-base font-semibold font-lora text-gray-700">
+                        Tax
+                      </p>
                       <div className="text-base font-poppins text-gray-700">
                         &#8369;{cart.taxPrice}
                       </div>
@@ -344,7 +346,7 @@ const CartScreen = () => {
                 </div>
               </div>
 
-              <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+              <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-4 shadow-sm sm:p-6">
                 <form className="space-y-4">
                   <div>
                     <p className="mb-2 block text-xs font-poppins text-gray-700">

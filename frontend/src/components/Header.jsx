@@ -66,7 +66,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/register" className="font-poppins transition uppercase">
+              <Link to="/login" className="font-poppins transition uppercase">
                 {" "}
                 <CgProfile className="w-6 h-6 text-gray-700 hover:text-black" />
               </Link>
@@ -154,7 +154,7 @@ const Header = () => {
                   Shop
                 </li>
               </Link>
-              <Link to="/">
+              <Link to="/login">
                 <li
                   className={`w-full hover:bg-white hover:shadow-sm text-lg p-2 font-lora font-semibold text-gray-700 ${
                     isMenuOpen && activeMenu === "login"

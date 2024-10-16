@@ -1,80 +1,81 @@
 import { USERS_URL } from "../constants";
-import { apiSlice } from "./apiSlices";
+import { apiSlice } from "./apiSlice";
 
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/auth`,
-        method: 'POST',
+        method: "POST",
         body: data,
-        credentials: 'include',
+        credentials: "include",
       }),
     }),
     register: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}`,
-        method: 'POST',
+        method: "POST",
         body: data,
-        credentials: 'include',
+        credentials: "include",
       }),
     }),
     logout: builder.mutation({
       query: () => ({
         url: `${USERS_URL}/logout`,
         method: "POST",
-        credentials: 'include',
+        credentials: "include",
       }),
     }),
     profile: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/profile`,
-        method: 'PUT',
+        method: "PUT",
         body: data,
-        credentials: 'include',
-      })
+        credentials: "include",
+      }),
     }),
     getUsers: builder.query({
       query: () => ({
         url: USERS_URL,
-        method: 'GET',
-        credentials: 'include'
+        method: "GET",
+        credentials: "include",
       }),
-      providesTags: ['User'],
+      providesTags: ["User"],
       keepUnusedDataFor: 5,
     }),
     deleteUser: builder.mutation({
       query: (userId) => ({
         url: `${USERS_URL}/${userId}`,
-        credentials: 'include',
-        method: 'DELETE'
+        credentials: "include",
+        method: "DELETE",
       }),
     }),
     getUserDetails: builder.query({
       query: (userId) => ({
         url: `${USERS_URL}/${userId}`,
-        credentials: 'include'
+        credentials: "include",
       }),
       keepUnusedDataFor: 5,
     }),
     updateUser: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/${data.userId}`,
-        method: 'PUT',
+        method: "PUT",
         body: data,
-        credentials: 'include',
+        credentials: "include",
       }),
-      invalidatesTags: ['User']
-    })
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
-export const { useLoginMutation,
+export const {
+  useLoginMutation,
   useLogoutMutation,
   useRegisterMutation,
   useProfileMutation,
   useGetUsersQuery,
   useDeleteUserMutation,
   useGetUserDetailsQuery,
-  useUpdateUserMutation
- } = usersApiSlice;
+  useUpdateUserMutation,
+} = usersApiSlice;
