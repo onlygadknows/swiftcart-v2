@@ -1,16 +1,27 @@
 import logo from "../assets/image/swift.png";
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
+import { FaUserCircle } from "react-icons/fa";
+
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import ProfileMenu from "./ProfileMenu";
 
 const Header = () => {
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("home");
+
   const { cartItems } = useSelector((state) => state.cart);
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const [isOpen, setIsOpen] = useState(false); // Set to false initially
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <header>
@@ -65,11 +76,13 @@ const Header = () => {
                 <MdOutlineShoppingCart className="w-6 h-6 text-gray-700 hover:text-black" />
               </Link>
             </li>
-            <li>
-              <Link to="/login" className="font-poppins transition uppercase">
-                {" "}
-                <CgProfile className="w-6 h-6 text-gray-700 hover:text-black" />
-              </Link>
+
+            <li onClick={toggleMenu}>
+              {userInfo ? (
+                <FaUserCircle className="w-6 h-6 text-gray-700 cursor-pointer hover:text-black font-poppins transition uppercase " />
+              ) : (
+                <CgProfile className="w-6 h-6 text-gray-700 cursor-pointer hover:text-black font-poppins transition uppercase " />
+              )}
             </li>
           </ul>
 
@@ -173,6 +186,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      <ProfileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
     </header>
   );
 };

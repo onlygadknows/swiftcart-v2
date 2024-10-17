@@ -46,7 +46,7 @@ const ProductScreen = () => {
               className="lg:h-[600px] object-cover rounded-lg"
             />
           </div>
-          <div className="col-start-2 flex flex-col justify-center rounded-md p-5">
+          <div className="col-start-2 flex flex-col justify-center rounded-md p-0 sm:p-5">
             <h1 className="font-semibold font-lora text-gray-700 uppercase text-3xl">
               {product.name}
             </h1>
@@ -93,7 +93,7 @@ const ProductScreen = () => {
               <div className="sm:w-screen flex flex-col gap-1 align-center justify-between flex-1">
                 {/* button */}
                 <div className="w-full">
-                  <div className="relative border-2 rounded-lg ">
+                  <div className="relative border-2 rounded-lg">
                     <select
                       value={qty}
                       onChange={(e) => setQty(Number(e.target.value))}
