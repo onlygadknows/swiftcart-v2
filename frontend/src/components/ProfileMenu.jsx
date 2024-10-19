@@ -163,7 +163,7 @@ const ProfileMenu = ({ isOpen, toggleMenu }) => {
             className="block rounded-lg bg-gray-100 px-4 mt-6 py-2 text-sm font-poppins text-gray-700"
             onClick={toggleMenu}
           >
-            Login
+            Sign in
           </Link>
         )}
       </div>
