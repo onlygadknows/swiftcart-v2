@@ -31,7 +31,7 @@ const Header = () => {
           <ul className="hidden md:flex items-center gap-5">
             <li className="font-lora uppercase font-bold">
               <Link
-                className="text-gray-700 hover:text-black transition"
+                className="text-gray-600 hover:text-black transition"
                 to="/"
               >
                 Home
@@ -39,7 +39,7 @@ const Header = () => {
             </li>
             <li className="font-lora uppercase font-bold transition">
               {" "}
-              <Link className="text-gray-700 hover:text-black" to="/">
+              <Link className="text-gray-600 hover:text-black" to="/">
                 Shop
               </Link>
             </li>
@@ -73,15 +73,15 @@ const Header = () => {
                     </div>
                   </>
                 )}
-                <MdOutlineShoppingCart className="w-6 h-6 text-gray-700 hover:text-black" />
+                <MdOutlineShoppingCart className="w-6 h-6 text-gray-600 hover:text-black" />
               </Link>
             </li>
 
             <li onClick={toggleMenu}>
               {userInfo ? (
-                <FaUserCircle className="w-6 h-6 text-gray-700 cursor-pointer hover:text-black font-poppins transition uppercase " />
+                <FaUserCircle className="w-6 h-6 text-gray-600 cursor-pointer hover:text-black font-poppins transition uppercase " />
               ) : (
-                <CgProfile className="w-6 h-6 text-gray-700 cursor-pointer hover:text-black font-poppins transition uppercase " />
+                <CgProfile className="w-6 h-6 text-gray-600 cursor-pointer hover:text-black font-poppins transition uppercase " />
               )}
             </li>
           </ul>

@@ -3,7 +3,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="bg-black p-2">
+    <div className="bg-black p-2 z-10">
       <div className="text-center text-primary font-poppins">
         Swift Cart v2.0 - Gad Ashell Sususco
       </div>

@@ -47,10 +47,10 @@ const ProductScreen = () => {
             />
           </div>
           <div className="col-start-2 flex flex-col justify-center rounded-md p-0 sm:p-5">
-            <h1 className="font-semibold font-lora text-gray-700 uppercase text-3xl">
+            <h1 className="font-semibold font-lora text-gray-800 uppercase text-3xl">
               {product.name}
             </h1>
-            <p className="text-poppins text-gray-700 font-semibold italic pt-5">
+            <p className="text-poppins text-gray-600 font-semibold italic pt-5">
               {product.description}
             </p>
 

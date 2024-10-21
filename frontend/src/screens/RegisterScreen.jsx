@@ -74,7 +74,6 @@ const RegisterScreen = () => {
             </label>
             <input
               type="text"
-              id="name"
               className={`form-input w-full px-4 py-2 border ${
                 errors.name ? "border-red-500" : ""
               }  rounded-lg  text-gray-700 focus:ring-blue-500`}
