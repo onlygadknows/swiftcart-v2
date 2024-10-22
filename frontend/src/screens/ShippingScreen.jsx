@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveShippingAddress } from "../slices/cartSlice";
-
+import CheckoutSteps from "../components/CheckoutSteps";
 const ShippingScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
@@ -37,8 +37,8 @@ const ShippingScreen = () => {
     } else if (/\S+@\S\.\S+/.test(phone)) {
       validationErrors.phone = "Phone entered should be numeric!";
     } else if (phone.length !== 11) {
-        validationErrors.phone = "Please enter 11 digit Phone number";
-      } 
+      validationErrors.phone = "Please enter 11 digit Phone number";
+    }
 
     if (!country.trim()) {
       validationErrors.country = "Please enter your Country";
@@ -73,7 +73,9 @@ const ShippingScreen = () => {
   };
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <CheckoutSteps step1 step2 />
+
+      <div className="mx-auto max-w-screen-lg px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
           <div className="lg:col-span-2 lg:py-12">
             <h1 className="text-3xl font-poppins uppercase text-gray-700 mb-10">
@@ -84,7 +86,7 @@ const ShippingScreen = () => {
               <a
                 href="https://www.linkedin.com/in/gadashellsususco/"
                 target="_blank"
-                className="text-blue-400"
+                className="text-blue-500"
               >
                 Gad Ashell
               </a>{" "}
@@ -105,7 +107,7 @@ const ShippingScreen = () => {
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12 border">
+          <div className="rounded-lg bg-white p-8 lg:col-span-3 lg:p-12 border-2">
             <form onSubmit={submitHandler} className="space-y-4">
               <div className="h-[4.2rem]">
                 <label className="sr-only" htmlFor="name">
@@ -114,7 +116,7 @@ const ShippingScreen = () => {
                 <input
                   className={`${
                     errors.address ? "border-red-500" : ""
-                  } w-full rounded-lg border-gray-200 p-3 text-sm border`}
+                  } w-full rounded-lg border-gray-200 text-gray-700 p-3 text-sm font-poppins border`}
                   placeholder="Complete Address"
                   type="text"
                   value={address}
@@ -135,7 +137,7 @@ const ShippingScreen = () => {
                   <input
                     className={`${
                       errors.city ? "border-red-500" : "border-gray-200"
-                    } w-full rounded-lg p-3 text-sm border`}
+                    } w-full rounded-lg p-3 text-gray-700 text-sm font-poppins border`}
                     placeholder="City"
                     type="text"
                     value={city}
@@ -155,7 +157,7 @@ const ShippingScreen = () => {
                   <input
                     className={`${
                       errors.phone ? "border-red-500" : "border-gray-200 "
-                    } w-full rounded-lg p-3 text-sm border`}
+                    } w-full rounded-lg p-3 text-gray-700 text-sm border`}
                     placeholder="Phone Number"
                     type="text"
                     value={phone}
@@ -175,7 +177,7 @@ const ShippingScreen = () => {
                 <input
                   className={`${
                     errors.postalCode ? "border-red-500" : "border-gray-200"
-                  } w-full rounded-lg p-3 text-sm border`}
+                  } w-full rounded-lg p-3 text-sm font-poppins border text-gray-700`}
                   placeholder="Postal Code"
                   type="text"
                   value={postalCode}
@@ -194,7 +196,7 @@ const ShippingScreen = () => {
                 <input
                   className={`${
                     errors.country ? "border-red-500" : "border-gray-200 "
-                  } w-full rounded-lg p-3 text-sm border`}
+                  } w-full rounded-lg p-3 text-sm font-poppins border text-gray-700`}
                   placeholder="Country"
                   type="text"
                   value={country}
@@ -215,7 +217,7 @@ const ShippingScreen = () => {
                 <textarea
                   className={`${
                     errors.message ? "border-red-500" : "border-gray-200"
-                  } w-full rounded-lg   p-3 text-sm border`}
+                  } w-full rounded-lg  p-3 text-sm font-poppins border text-gray-700 `}
                   placeholder="Message"
                   rows="3"
                   id="message"
@@ -232,7 +234,7 @@ const ShippingScreen = () => {
               <div className="mt-4">
                 <button
                   type="submit"
-                  className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+                  className="inline-block w-full rounded-lg bg-blue-500 hover:bg-blue-600 px-5 py-3 font-medium text-white sm:w-auto"
                 >
                   Okay
                 </button>

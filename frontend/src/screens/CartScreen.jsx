@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, addToFavorites, removeFromCart } from "../slices/cartSlice";
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
-
+import CheckoutSteps from "../components/CheckoutSteps";
 const CartScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,6 +39,8 @@ const CartScreen = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      {/* Steps */}
+      <CheckoutSteps step1/>
       {/* Shopping cart section */}
       <div className="mx-auto max-w-2xl px-4 sm:px-6 sm:py-11 md:py-10 lg:max-w-7xl lg:px-8">
         <h2 className="text-xl font-lora font-semibold text-gray-700">
