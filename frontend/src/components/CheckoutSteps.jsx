@@ -143,7 +143,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                   </svg>
 
                   <p className="leading-none">
-                    <strong className="block font-medium font-poppins"> Payment </strong>
+                    <strong className="block font-medium font-poppins"> Payment  {step4 && "> Place Order"}   </strong>
                     <small className="mt-1 font-poppins"> Show us the money. </small>
                   </p>
                 </li>
@@ -171,6 +171,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                 </p>
               </li>
             )}
+            
           </ol>
         </div>
       </div>

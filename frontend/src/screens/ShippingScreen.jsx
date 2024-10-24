@@ -234,7 +234,7 @@ const ShippingScreen = () => {
               <div className="mt-4">
                 <button
                   type="submit"
-                  className="inline-block w-full rounded-lg bg-blue-500 hover:bg-blue-600 px-5 py-3 font-medium text-white sm:w-auto"
+                  className="flex w-full border bg-blue-600 text-white hover:border-gray-200 items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-poppins hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300"
                 >
                   Okay
                 </button>

@@ -44,6 +44,11 @@ const cartSlice = createSlice({
 
       return state;
     },
+    removeFromFav: (state, action) => {
+      state.favItems = state.favItems.filter((x) => x._id !== action.payload);
+
+      return updateCart(state);
+    },
 
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter((x) => x._id !== action.payload);
@@ -59,15 +64,21 @@ const cartSlice = createSlice({
       state.paymentMethod = action.payload;
       return updateCart(state);
     },
+    clearCartItems: (state, action) => {
+      state.cartItems = [];
+      return updateCart(state);
+    },
   },
 });
 
 export const {
   addToCart,
   addToFavorites,
+  removeFromFav,
   removeFromCart,
   saveShippingAddress,
   savePaymentMethod,
+  clearCartItems
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
