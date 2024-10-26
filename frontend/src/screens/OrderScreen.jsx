@@ -161,7 +161,7 @@ const OrderScreen = () => {
               Contact
             </p>
             <p className="text-base font-poppins text-gray-700">
-              {order.shippingAddress.phone}
+              +63{order.shippingAddress.phone}
             </p>
           </div>
           <div>

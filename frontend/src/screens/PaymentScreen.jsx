@@ -148,7 +148,7 @@ const PaymentScreen = () => {
               </div>
             </div>
 
-            <p class="mt-6 text-center text-gray-500  sm:mt-8 lg:text-left">
+            <p class="mt-6 text-center text-gray-500 sm:mt-8 ">
               Payment processed by{" "}
               <a
                 href="#"

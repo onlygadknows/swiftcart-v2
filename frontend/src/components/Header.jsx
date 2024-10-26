@@ -132,7 +132,7 @@ const Header = () => {
           </div>
 
           <div
-            className={`absolute md:hidden top-24 bg-gray-50 shadow-md left-0 w-full flex basis-full grow flex-col overflow-hidden transition-all duration-300 items-center ${
+            className={`z-50 absolute md:hidden top-24 bg-gray-50 shadow-md left-0 w-full flex basis-full grow flex-col overflow-hidden transition-all duration-300 items-center ${
               isMenuOpen ? "block" : "hidden"
             }`}
           >
@@ -177,9 +177,11 @@ const Header = () => {
                   onClick={() => {
                     setActiveMenu("login");
                     setisMenuOpen(!isMenuOpen);
+                    toggleMenu()
                   }}
                 >
-                  Login
+                  {userInfo ? `Hello, ${userInfo.name}!` : "Sign In"}
+                  
                 </li>
               </Link>
             </ul>

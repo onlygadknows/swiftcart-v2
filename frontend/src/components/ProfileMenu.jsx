@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { logout } from "../slices/authSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 
 const ProfileMenu = ({ isOpen, toggleMenu }) => {
@@ -27,8 +27,11 @@ const ProfileMenu = ({ isOpen, toggleMenu }) => {
       } transition-transform duration-300 border`}
     >
       <div className="px-4 py-6">
-        <button onClick={toggleMenu} className="hover:bg-gray-50 grid h-10 place-content-center rounded-2xl text-md w-10 border mb-2">
-          <MdOutlineKeyboardArrowRight  className="text-4xl size-5" />
+        <button
+          onClick={toggleMenu}
+          className="hover:bg-gray-50 grid h-10 place-content-center rounded-2xl text-md w-10 border mb-2"
+        >
+          <MdOutlineKeyboardArrowRight className="text-4xl size-5" />
         </button>
 
         {userInfo && (
@@ -37,13 +40,13 @@ const ProfileMenu = ({ isOpen, toggleMenu }) => {
           </span>
         )}
         {userInfo && userInfo.isAdmin && (
-            <ul className="mt-6 space-y-2">
+          <ul className="mt-6 space-y-2">
             <li>
               <a
                 href="#"
                 className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-poppins text-gray-700"
               >
-                Dashboard 
+                Dashboard
               </a>
             </li>
             <li>
@@ -135,31 +138,29 @@ const ProfileMenu = ({ isOpen, toggleMenu }) => {
                 </summary>
                 <ul className="mt-2 space-y-1 px-4">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to={"/profile"}
                       className="block rounded-lg px-4 py-2 text-sm font-poppins text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                     >
                       Profile
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to={"/myorders"}
                       className="block rounded-lg px-4 py-2 text-sm font-poppins text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                     >
                       My Orders
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <form action="#">
-                      <button
-                        type="submit"
-                        className="w-full rounded-lg px-4 py-2 text-sm font-poppins text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700"
-                        onClick={logoutHandler}
-                      >
-                        Logout
-                      </button>
-                    </form>
+                    <button
+                      type="submit"
+                      className="w-full rounded-lg px-4 py-2 text-sm font-poppins text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700"
+                      onClick={logoutHandler}
+                    >
+                      Logout
+                    </button>
                   </li>
                 </ul>
               </details>
