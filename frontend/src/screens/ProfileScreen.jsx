@@ -22,7 +22,6 @@ const ProfileScreen = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // You can add validation here and handle registration logic
-    console.log({ name, email, password });
 
     const validationErrors = {};
     if (!name.trim()) {

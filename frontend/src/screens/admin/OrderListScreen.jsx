@@ -1,12 +1,13 @@
-import React from "react";
-import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { formatDate } from "../utils/dateConvertUtils";
-import TableLoader from "../components/TableLoader";
-import Message from "../components/Message";
-const MyOrderScreen = () => {
-  const { data: orders, isLoading, error } = useGetMyOrdersQuery();
-  console.log(orders);
+import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
+import { formatDate } from "../../utils/dateConvertUtils";
+import TableLoader from "../../components/TableLoader";
+const OrderListScreen = () => {
+  const { data: orders, isLoading, refetch, error } = useGetOrdersQuery();
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   return isLoading ? (
     <TableLoader />
@@ -22,12 +23,15 @@ const MyOrderScreen = () => {
     <div className="bg-white w-full">
       <div className="mx-auto overflow-x-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 md:py-32 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-lora mb-4 text-gray-700">
-          Account &gt; My Orders
+          Admin &gt; Order History
         </h2>
-
+        
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
+              <th scope="col" className="px-6 py-3 font-lora">
+                Name
+              </th>
               <th scope="col" className="px-6 py-3 font-lora">
                 References
               </th>
@@ -48,6 +52,9 @@ const MyOrderScreen = () => {
           <tbody>
             {orders.map((order) => (
               <tr className="bg-white border-b  ">
+                <td className="px-6 py-4 font-normal font-poppins">
+                  {order.user.name}
+                </td>
                 <Link to={`/order/${order._id}`}>
                   <td
                     scope="row"
@@ -73,7 +80,6 @@ const MyOrderScreen = () => {
                 <td className="px-6 py-4 font-normal font-poppins">
                   {order.isDelivered ? (
                     <span className="text-blue-900">
-                      {" "}
                       {formatDate(order.deliveredAt)}
                     </span>
                   ) : (
@@ -89,4 +95,4 @@ const MyOrderScreen = () => {
   );
 };
 
-export default MyOrderScreen;
+export default OrderListScreen;

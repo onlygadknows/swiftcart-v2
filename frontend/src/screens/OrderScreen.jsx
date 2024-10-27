@@ -146,7 +146,7 @@ const OrderScreen = () => {
               City, {order.shippingAddress.country},{" "}
               {order.shippingAddress.postalCode} -{" "}
               {order.isDelivered ? (
-                <span className="text-base font-poppins text-blue-700">
+                <span className="text-base font-poppins text-blue-900">
                   Delivered on {formatDate(order.deliveredAt)}
                 </span>
               ) : (
@@ -180,7 +180,7 @@ const OrderScreen = () => {
             <p className="text-base font-poppins text-gray-700">
               {order.paymentMethod} -{" "}
               {order.isPaid ? (
-                <span className="text-base font-poppins text-blue-700">
+                <span className="text-base font-poppins text-blue-900">
                   Paid
                 </span>
               ) : (

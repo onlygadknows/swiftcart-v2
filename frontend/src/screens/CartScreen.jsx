@@ -12,7 +12,6 @@ import {
 import { MdFavoriteBorder } from "react-icons/md";
 import CheckoutSteps from "../components/CheckoutSteps";
 const CartScreen = () => {
-  const [toggerFav, setToggleFav] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);

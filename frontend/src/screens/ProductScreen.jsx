@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MdAddShoppingCart } from "react-icons/md";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
@@ -16,8 +16,12 @@ const ProductScreen = () => {
     data: product,
     isLoading,
     error,
+    refetch
   } = useGetProductDetailsQuery(productId);
 
+  useEffect(() => {
+    refetch();
+  }, []);
   const addToCartHandler = () => {
     dispatch(
       addToCart({
