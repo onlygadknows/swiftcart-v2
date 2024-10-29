@@ -12,13 +12,16 @@ const ProfileMenu = ({ isOpen, toggleMenu }) => {
   const [logoutApiCall] = useLogoutMutation();
 
   const logoutHandler = async () => {
-    try {
-      await logoutApiCall().unwrap();
-      dispatch(logout());
-      navigate("/login");
-    } catch (err) {
-      console.log(err);
+    if (window.confirm("Are you sure you want to log out?")) {
+      try {
+        await logoutApiCall().unwrap();
+        dispatch(logout());
+        navigate("/login");
+      } catch (err) {
+        console.log(err);
+      }
     }
+   
   };
   return (
     <div
@@ -80,7 +83,7 @@ const ProfileMenu = ({ isOpen, toggleMenu }) => {
                     </Link>
                   </li>
                   <li>
-                  <Link to={"#"}>
+                  <Link to={"/admin/userlist"}>
                   <button
                         type="submit"
                         className="w-full rounded-lg px-4 py-2 text-sm font-poppins text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700"

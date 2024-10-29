@@ -7,6 +7,7 @@ import { addToCart } from "../slices/cartSlice";
 import ProductLoader from "../components/ProductLoader";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
+
 const ProductScreen = () => {
   const { id: productId } = useParams();
   const [qty, setQty] = useState(1);
@@ -22,6 +23,7 @@ const ProductScreen = () => {
   useEffect(() => {
     refetch();
   }, []);
+
   const addToCartHandler = () => {
     dispatch(
       addToCart({

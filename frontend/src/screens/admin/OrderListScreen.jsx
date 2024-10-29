@@ -25,7 +25,7 @@ const OrderListScreen = () => {
         <h2 className="text-2xl font-lora mb-4 text-gray-700">
           Admin &gt; Order History
         </h2>
-        
+
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
@@ -51,19 +51,17 @@ const OrderListScreen = () => {
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr className="bg-white border-b  ">
+              <tr key={order._id} className="bg-white border-b  ">
                 <td className="px-6 py-4 font-normal font-poppins">
-                  {order.user.name}
+                  {order.user?.name}
                 </td>
-                <Link to={`/order/${order._id}`}>
-                  <td
-                    scope="row"
-                    className="px-6 py-4 font-normal text-blue-900 whitespace-nowrap font-poppins"
-                  >
-                    {order._id}
-                  </td>
-                </Link>
 
+                <td
+                  scope="row"
+                  className="px-6 py-4 font-normal text-blue-900 whitespace-nowrap font-poppins"
+                >
+                  <Link to={`/order/${order._id}`}>{order._id}</Link>
+                </td>
                 <td className="px-6 py-4 font-normal font-poppins">
                   {formatDate(order.updatedAt)}
                 </td>

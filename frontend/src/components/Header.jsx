@@ -2,7 +2,7 @@ import logo from "../assets/image/swift.png";
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaUserCircle } from "react-icons/fa";
-
+import { MdFavoriteBorder } from "react-icons/md";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
@@ -59,6 +59,16 @@ const Header = () => {
 
           {/* Right-side nav links */}
           <ul className="relative hidden md:flex items-center gap-7">
+          <li>
+              <Link
+                to="/favorites"
+                className="font-poppins transition uppercase relative "
+              >
+              
+                <MdFavoriteBorder className="w-6 h-6 text-gray-600 hover:text-black" />
+              </Link>
+            </li>
+
             <li>
               <Link
                 to="/cart"

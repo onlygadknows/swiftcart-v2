@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Rating from "../components/Rating";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
-  addToFavorites,
   removeFromCart,
-  removeFromFav,
 } from "../slices/cartSlice";
 
-import { MdFavoriteBorder } from "react-icons/md";
 import CheckoutSteps from "../components/CheckoutSteps";
 const CartScreen = () => {
   const navigate = useNavigate();
@@ -26,14 +24,6 @@ const CartScreen = () => {
     );
   };
 
-  const addToFavoritesHandler = (product) => {
-    const isFavorite = favItems.find((favItem) => favItem._id === product._id);
-    if (isFavorite) {
-      dispatch(removeFromFav(product._id));
-    } else {
-      dispatch(addToFavorites(product));
-    }
-  };
 
   const removeFromCartHandler = async (id) => {
     dispatch(removeFromCart(id));
@@ -134,25 +124,6 @@ const CartScreen = () => {
                         <div className="flex items-center gap-4">
                           <button
                             type="button"
-                            className={`inline-flex items-center text-sm font-medium ${
-                              favItems.find(
-                                (favItem) => favItem._id === item._id
-                              )
-                                ? "text-red-500"
-                                : "text-gray-500"
-                            } hover:text-gray-900 hover:underline`}
-                            onClick={() => addToFavoritesHandler(item)}
-                          >
-                            <MdFavoriteBorder className={`me-1.5 h-5 w-5`} />
-                            {favItems.find(
-                              (favItem) => favItem._id === item._id
-                            )
-                              ? "Dislike"
-                              : "Like"}
-                          </button>
-
-                          <button
-                            type="button"
                             className="inline-flex items-center text-sm font-medium text-red-500 hover:underline"
                             onClick={() => removeFromCartHandler(item._id)}
                           >
@@ -195,13 +166,15 @@ const CartScreen = () => {
                           alt="imac image"
                         />
                       </Link>
-                      <div>
+                      <div className="flex items-center justify-start flex-col">
                         <Link
                           to={`/product/${item._id}`}
-                          className="text-lg md:text-md font-lora font-semibold text-gray-700 hover:underline"
+                          className="text-md md:text-md font-lora font-semibold text-gray-700 hover:underline"
                         >
                           {item.name}
                         </Link>
+
+                        <Rating value={item.rating} />
                       </div>
                     </div>
                   ))}

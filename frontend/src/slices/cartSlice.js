@@ -42,7 +42,7 @@ const cartSlice = createSlice({
         state.favItems = [...state.favItems, item];
       }
 
-      return state;
+      return updateCart(state); // Persist changes
     },
     removeFromFav: (state, action) => {
       state.favItems = state.favItems.filter((x) => x._id !== action.payload);

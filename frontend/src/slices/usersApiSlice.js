@@ -54,6 +54,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       query: (userId) => ({
         url: `${USERS_URL}/${userId}`,
         credentials: "include",
+
       }),
       keepUnusedDataFor: 5,
     }),
@@ -64,7 +65,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
         credentials: "include",
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["Users"],
     }),
   }),
 });
