@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { logout } from "../slices/authSlice";
@@ -5,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 
-const ProfileMenu = ({ isOpen, toggleMenu }) => {
+const ProfileMenu = ({ setIsOpen, isOpen, toggleMenu }) => {
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,10 +22,21 @@ const ProfileMenu = ({ isOpen, toggleMenu }) => {
         console.log(err);
       }
     }
-   
   };
+
+  let menuRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener("mousedown", (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    });
+  }, []);
+
   return (
     <div
+      ref={menuRef}
       className={`z-10 flex w-64 h-screen flex-col justify-between bg-white fixed right-0 top-0 transform ${
         isOpen ? "translate-x-0" : "translate-x-full"
       } transition-transform duration-300 border`}
@@ -83,8 +95,8 @@ const ProfileMenu = ({ isOpen, toggleMenu }) => {
                     </Link>
                   </li>
                   <li>
-                  <Link to={"/admin/userlist"}>
-                  <button
+                    <Link to={"/admin/userlist"}>
+                      <button
                         type="submit"
                         className="w-full rounded-lg px-4 py-2 text-sm font-poppins text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700"
                       >
@@ -94,14 +106,13 @@ const ProfileMenu = ({ isOpen, toggleMenu }) => {
                   </li>
                   <li>
                     <Link to={"/admin/orderlist"}>
-                    <button
+                      <button
                         type="submit"
                         className="w-full rounded-lg px-4 py-2 text-sm font-poppins text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700"
                       >
                         Orders
                       </button>
                     </Link>
-                
                   </li>
                 </ul>
               </details>

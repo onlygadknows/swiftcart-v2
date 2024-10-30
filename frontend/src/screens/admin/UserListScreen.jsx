@@ -46,12 +46,12 @@ const UserListScreen = () => {
     <TableLoader />
   ) : isUsersError ? (
     <div className="mx-auto overflow-x-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 md:py-32 lg:max-w-7xl lg:px-8">
-      <Message variant="alert" message={"Something went wrong!"} />
+      <Message variant="alert" message={"Something went wrong! 😌"} />
     </div>
   ) : !users || users.length === 0 ? (
     <div className="bg-white w-full">
       <div className="mx-auto overflow-x-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 md:py-32 lg:max-w-7xl lg:px-8">
-        <Message variant="alert" message={"No products!"} />
+        <Message variant="alert" message={"No products! 😌"} />
       </div>
     </div>
   ) : (

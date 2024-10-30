@@ -29,10 +29,12 @@ const FavoriteScreen = () => {
             <Loader count={8} />
           </div>
         ) : error ? (
-          <Message
-            variant="alert"
-            message={error?.data?.message || error.error}
-          />
+          <div className="mx-auto overflow-x-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 md:py-32 lg:max-w-7xl lg:px-8">
+            <Message
+              variant="alert"
+              message={"Unable to fetch Products 😌"}
+            />{" "}
+          </div>
         ) : (
           <>
             <h2 className="text-xl mb-8 font-lora font-semibold text-gray-700">

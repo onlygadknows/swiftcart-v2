@@ -1,6 +1,6 @@
 import Rating from "./Rating";
 import { Link } from "react-router-dom";
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdFavoriteBorder, MdFavorite  } from "react-icons/md";
 
 import {
   addToFavorites,
@@ -46,10 +46,10 @@ const Product = ({ product }) => {
           } hover:text-gray-900 hover:underline`}
           onClick={() => addToFavoritesHandler(product)}
         >
-          <MdFavoriteBorder className={`me-1.5 h-5 w-5`} />
+          <MdFavorite className={`me-1.5 h-5 w-5`} />
           {favItems.find((favItem) => favItem._id === product._id)
-            ? "Dislike"
-            : "Like"}
+            ? "Remove"
+            : "Add to favorites"}
         </button>
 
       

@@ -198,7 +198,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      <ProfileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
+      <ProfileMenu setIsOpen={setIsOpen} isOpen={isOpen} toggleMenu={toggleMenu} />
     </header>
   );
 };

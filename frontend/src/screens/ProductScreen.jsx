@@ -17,7 +17,7 @@ const ProductScreen = () => {
     data: product,
     isLoading,
     error,
-    refetch
+    refetch,
   } = useGetProductDetailsQuery(productId);
 
   useEffect(() => {
@@ -36,9 +36,17 @@ const ProductScreen = () => {
   return (
     <div className="w-full mb-5">
       {isLoading ? (
-        <ProductLoader />
+
+                  <ProductLoader />
+
       ) : error ? (
-        <Message variant="alert" message={error?.data?.message || error.error} />
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 md:py-32 lg:max-w-7xl lg:px-8">
+           <Message
+          variant="alert"
+          message={error?.data?.message || error.error}
+        />
+        </div>
+       
       ) : (
         <div className="mt-10 h-auto mx-auto max-w-2xl px-4 sm:px-6 sm:flex sm:justify-between sm:flex-col sm:gap-2 md:gap-1 lg:grid-rows-1 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-5">
           <div
@@ -65,7 +73,7 @@ const ProductScreen = () => {
               <div className="flex align-center flex-col gap-0 justify-between flex-1 border-2 rounded-md shadow-sm">
                 <div className="flex align-center justify-center flex-col">
                   <p className="font-semibold text-green-600 text-xl text-center">
-                     &#8369;{product.price}
+                    &#8369;{product.price}
                   </p>
 
                   <div className="flex items-center justify-center flex-col">

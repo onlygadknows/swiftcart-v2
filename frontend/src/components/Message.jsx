@@ -1,25 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Message = ({ variant, message }) => {
   return (
+    <div className="grid place-content-center bg-white px-4">
+    <div className="text-center">
+      <h1 className="text-9xl font-black text-gray-200">404</h1>
   
-     <div className="bg-red-50 mt-6 border-s-4 border-red-500 p-4" role={variant} tabindex="-1" aria-labelledby="hs-bordered-red-style-label">
-     <div className="flex">
-       <div className="shrink-0">
-         <span className="inline-flex justify-center items-center size-8 rounded-full border-4 border-red-100 bg-red-200 text-red-800">
-           <svg className="shrink-0 size-4 animate-ping" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-             <path d="M18 6 6 18"></path>
-             <path d="m6 6 12 12"></path>
-           </svg>
-         </span>
-       </div>
-       <div className="ms-3 flex items-center justify-center">
-         <h3 id="hs-bordered-red-style-label" className="text-gray-800 font-semibold ">
-         {message}
-         </h3>
-       </div>
-     </div>
-   </div>
+      <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Uh-oh!</p>
+      <p className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{message}</p>
+  
+      <p className="mt-4 text-gray-500">We can't find that page.</p>
+  
+      <a
+        href={"/"}
+        className="mt-6 inline-block rounded bg-red-600 transition-colors px-5 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring"
+      >
+        Go Back Home
+      </a>
+    </div>
+  </div>
   );
 };
 

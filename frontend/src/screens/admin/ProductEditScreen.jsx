@@ -19,7 +19,7 @@ const ProductEditScreen = () => {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
-
+  const [isImageUploaded, setisImageUploaded] = useState(false);
   const {
     data: product,
     isLoading,
@@ -45,6 +45,7 @@ const ProductEditScreen = () => {
       setCountInStock(product.countInStock);
       setDescription(product.description);
     }
+    refetch();
   }, [product]);
 
   const submitHandler = async (e) => {
@@ -62,7 +63,7 @@ const ProductEditScreen = () => {
 
     const result = await updateProduct(updatedProduct);
     if (result.error) {
-        console.log(result.error)
+      console.log(result.error);
     } else {
       navigate("/admin/productlist");
     }
@@ -79,8 +80,9 @@ const ProductEditScreen = () => {
 
       // Set the full image URL in the state
       setImage(res.image);
+      setisImageUploaded(true);
     } catch (err) {
-        console.log(err)
+      console.log(err);
     }
   };
 
@@ -104,54 +106,77 @@ const ProductEditScreen = () => {
         >
           <div>
             <div className="relative mb-2">
+              <label htmlFor="Price" className="font-poppins text-gray-600">
+                Product Name *
+              </label>
               <input
                 type="text"
-                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins "
+                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins text-gray-600"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Enter email"
+                placeholder="Enter name of the Product"
               />
             </div>
-          
+
             <div className="relative mb-2">
+              <label htmlFor="Price" className="font-poppins text-gray-600">
+                Price *
+              </label>
               <input
                 type="text"
-                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins "
+                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins text-gray-600"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="Enter Price"
               />
             </div>
+
             <div className="relative mb-2">
+              <label htmlFor="Price" className="font-poppins text-gray-600">
+                Product Brand *
+              </label>
+
               <input
                 type="text"
-                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins "
+                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins text-gray-600"
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
                 placeholder="Enter Brand"
               />
             </div>
             <div className="relative mb-2">
+              <label htmlFor="Price" className="font-poppins text-gray-600">
+                Product Category *
+              </label>
+
               <input
                 type="text"
-                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins "
+                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins text-gray-600"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 placeholder="Enter Category"
               />
             </div>
+
             <div className="relative mb-2">
+              <label htmlFor="Price" className="font-poppins text-gray-600">
+                How many stocks do you have? *
+              </label>
               <input
                 type="number"
-                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins "
+                className="w-full rounded-lg border-2 border-gray-200 p-4 pe-12 text-sm font-poppins text-gray-600"
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
                 placeholder="How many stocks?"
               />
             </div>
             <div className="relative mb-2">
+              <label htmlFor="Price" className="font-poppins text-gray-600">
+                Product Description *
+              </label>
+
               <textarea
-                className="w-full rounded-lg border-2 h-24 border-gray-200 p-4 pe-12 text-sm font-poppins "
+                className="w-full rounded-lg border-2 h-24 border-gray-200 p-4 pe-12 text-sm font-poppins text-gray-600"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Enter Description"
@@ -160,7 +185,7 @@ const ProductEditScreen = () => {
             <div className="relative mb-2">
               <label
                 for="uploadFile1"
-                class="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
+                class="bg-white text-gray-500 font-semibold text-base rounded max-w-md min-h-52 p-2 h-auto flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +201,18 @@ const ProductEditScreen = () => {
                     data-original="#000000"
                   />
                 </svg>
-                Upload file
+                {isImageUploaded ? `${image}` : ""}
+                {isImageUploaded ? (
+                  <div className="w-full h-48 overflow-hidden rounded-lg bg-gray-200 relative">
+                    <img
+                      alt={image}
+                      src={image}
+                      className="h-full w-full object-cover object-center group-hover:opacity-75"
+                    />
+                  </div>
+                ) : (
+                  "Upload file"
+                )}
                 <input
                   type="file"
                   id="uploadFile1"
@@ -190,7 +226,9 @@ const ProductEditScreen = () => {
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-500">Hit Edit to continue</p>
+            <p className="text-sm font-poppins text-gray-500">
+              Hit Edit to continue
+            </p>
 
             <button
               type="submit"
