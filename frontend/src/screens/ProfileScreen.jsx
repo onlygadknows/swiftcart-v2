@@ -65,7 +65,7 @@ const ProfileScreen = () => {
   };
   return (
     <div className="flex w-full items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-none sm:shadow-xl max-w-sm w-full border-0 sm:border-2">
+      <div className="bg-white p-8 rounded-lg shadow-none sm:shadow-xl max-w-sm w-full border-0 sm:border">
         <h2 className="text-2xl font-lora text-center mb-4 text-gray-700">
           User Profile
         </h2>

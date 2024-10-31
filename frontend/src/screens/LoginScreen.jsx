@@ -54,7 +54,7 @@ const LoginScreen = () => {
 
   return (
     <div className="flex w-full items-center justify-center h-[80vh]">
-      <div className="bg-white p-8 rounded-lg shadow-none sm:shadow-lg max-w-sm w-full border-0 sm:border-2">
+      <div className="bg-white p-8 rounded-lg shadow-none sm:shadow-lg max-w-sm w-full border-0 sm:border">
         <h2 className="text-2xl font-lora text-center mb-4 text-gray-700">
           SwiftCart by Gad Ashell
         </h2>

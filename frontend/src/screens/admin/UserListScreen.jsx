@@ -96,7 +96,7 @@ const UserListScreen = () => {
                   {user.email}
                 </td>
                 <td className="px-6 py-4 font-normal font-poppins">
-                  {user.isAdmin ? <span>admin</span> : <span>not admin</span>}
+                  {user.isAdmin ? <span className="text-blue-900">Admin</span> : <span>Not Admin</span>}
                 </td>
 
                 <td className="px-6 py-4 font-normal font-poppins">

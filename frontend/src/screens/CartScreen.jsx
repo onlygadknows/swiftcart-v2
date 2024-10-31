@@ -51,7 +51,7 @@ const CartScreen = () => {
                 {cartItems.map((item) => (
                   <div
                     key={item._id}
-                    className="rounded-lg border-2 border-gray-200 bg-white p-4 shadow-sm "
+                    className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm "
                   >
                     <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                       <Link
@@ -59,13 +59,13 @@ const CartScreen = () => {
                         className="md:w-36 w-32 min-h-28 bg-cover"
                       >
                         <img
-                          className="md:w-36 h-28 w-32 hover:scale-110 transition"
+                          className="md:w-36 h-28 w-32 rounded-md hover:scale-110 transition"
                           src={item.image}
                           alt={item.name}
                         />
                       </Link>
                       <div className="flex items-center justify-between md:order-3 md:justify-end">
-                        <div className="relative border-2 rounded-lg ">
+                        <div className="relative border rounded-lg ">
                           <select
                             value={item.qty}
                             onChange={(e) =>
@@ -155,26 +155,28 @@ const CartScreen = () => {
                 </h3>
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:mt-8">
                   {favItems.map((item) => (
-                    <div className="space-y-6 overflow-hidden rounded-lg border-2 border-gray-200 bg-white p-6 shadow-sm">
+                    <div className="space-y-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
                       <Link
                         to={`/product/${item._id}`}
-                        className="overflow-hidden rounded"
+                        className="overflow-hidden "
                       >
                         <img
-                          className="mx-auto h-44 w-auto max-w-full dark:hidiven"
+                          className="mx-auto rounded-sm h-44 w-auto max-w-full"
                           src={item.image}
                           alt="imac image"
                         />
                       </Link>
-                      <div className="flex items-center justify-start flex-col">
+                      <div className="flex flex-col">
                         <Link
                           to={`/product/${item._id}`}
-                          className="text-md md:text-md font-lora font-semibold text-gray-700 hover:underline"
+                          className="text-md md:text-md font-poppins h-10 text-gray-700 hover:underline"
                         >
                           {item.name}
                         </Link>
+                      <div className="flex w-full">
+                      <Rating value={item.rating} />
 
-                        <Rating value={item.rating} />
+                      </div>
                       </div>
                     </div>
                   ))}
@@ -183,7 +185,7 @@ const CartScreen = () => {
             </div>
 
             <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-              <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+              <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
                 <h1 className="text-xl font-lora font-semibold text-gray-700">
                   Order summary
                 </h1>
@@ -279,7 +281,7 @@ const CartScreen = () => {
                 </div>
               </div>
 
-              <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+              <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
                 <form className="space-y-4">
                   <div>
                     <p className="mb-2 block text-xs font-poppins text-gray-700">

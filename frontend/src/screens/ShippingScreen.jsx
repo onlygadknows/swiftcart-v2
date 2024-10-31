@@ -107,7 +107,7 @@ const ShippingScreen = () => {
             </div>
           </div>
 
-          <div className="rounded-lg p-8 lg:col-span-3 lg:p-12 border-2 bg-gray-50">
+          <div className="rounded-lg p-8 lg:col-span-3 lg:p-12 border">
             <form onSubmit={submitHandler} className="space-y-4">
               <div className="h-[4.2rem]">
                 <label className="sr-only" htmlFor="name">

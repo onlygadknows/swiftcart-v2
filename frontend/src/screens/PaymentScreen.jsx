@@ -36,7 +36,7 @@ const PaymentScreen = () => {
 
             <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12">
               <div class="mt-6 grow sm:mt-8 lg:mt-0">
-                <div class="space-y-4 rounded-lg border-2 border-gray-100 p-6">
+                <div class="space-y-4 rounded-lg border border-gray-100 p-6">
                   <div class="space-y-2">
                     <div class="flex items-center justify-between gap-4">
                       <p class="font-normal font-poppins text-gray-500 ">
