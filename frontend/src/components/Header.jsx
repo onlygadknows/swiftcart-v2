@@ -2,9 +2,8 @@ import logo from "../assets/image/swift.png";
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaUserCircle } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart,FaHeart } from "react-icons/fa";
 
-import { MdFavoriteBorder } from "react-icons/md";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
@@ -16,12 +15,12 @@ const Header = () => {
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("home");
 
-  const { cartItems, favItems } = useSelector((state) => state.cart);
-
+  const cart = useSelector((state) => state.cart);
+  const { favItems, cartItems } = cart;
   const { userInfo } = useSelector((state) => state.auth);
 
   const [isOpen, setIsOpen] = useState(false); // Set to false initially
-
+  console.log(favItems)
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -70,7 +69,11 @@ const Header = () => {
                 to="/favorites"
                 className="font-poppins transition uppercase relative "
               >
-                <MdFavoriteBorder className="w-6 h-6 text-gray-600 hover:text-black" />
+                {favItems.length > 0 ? (
+                  <FaHeart className="w-6 h-6 text-red-500 hover:text-black" />
+                ) : (
+                  <FaRegHeart className="w-6 h-6 text-gray-600 hover:text-black" />
+                )}
               </Link>
             </li>
 
