@@ -1,61 +1,94 @@
-import React, { useEffect, useRef } from "react";
 import { useGetTopProductsQuery } from "../slices/productsApiSlice";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const Slider = () => {
-  const sliderRef = useRef(null);
+const ProductSlider = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
 
-  useEffect(() => {
-    const slider = sliderRef.current;
-
-    const moveSlide = () => {
-      const max = slider.scrollWidth - slider.clientWidth;
-      const left = slider.clientWidth;
-
-      if (max <= slider.scrollLeft + left) {
-        slider.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        slider.scrollBy({ left, behavior: "smooth" });
-      }
-    };
-
-    const intervalId = setInterval(moveSlide, 4000);
-
-    return () => clearInterval(intervalId); // Clean up on unmount
-  }, []);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    waitForAnimate: false,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+  };
 
   return (
-    <div
-      className="w-full h-[30rem] overflow-hidden flex flex-nowrap text-center"
-      id="slider"
-      ref={sliderRef}
-    >
-        
+    <Slider {...settings}>
       {products?.map((product) => (
-        <div key={product._id} className="flex-none w-[100vw] flex flex-col items-center justify-center">
+        <div className="max-w-sm flex  items-center justify-center  grayscale hover:grayscale-0">
           <Link to={`/product/${product._id}`}>
-            <figure className="relative justify-around max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="h-auto max-w-full"
-              />
-              <div className=" p-4 rounded-md">
-                <h2 className="max-w-md font-lora font-semibold text-gray-600 text-3xl">
-                  {product.name}
-                </h2>
-                <p className="max-w-md capitalize text-lg text-gray-500 font-poppins">
-                  for only <span>&#x20B1;</span>
-                  {product.price}
-                </p>
-              </div>
-            </figure>
+            <img
+              src={product.image}
+              alt={product.name}
+              className="h-[300px] w-full  object-contain max-w-full rounded-r-lg"
+            />
           </Link>
+
+          <div className="p-4 rounded-md">
+            <h2 className="max-w-md font-lora text-center font-semibold text-gray-600 text-lg">
+              {product.name}
+            </h2>
+            <p className="max-w-md capitalize text-center text-md text-gray-500 font-poppins">
+              for only <span>&#x20B1;</span>
+              {product.price}
+            </p>
+          </div>
         </div>
       ))}
+      {/* <div className="w-full bg-blue-300">
+      <h3>1</h3>
     </div>
+    <div className="w-full bg-pink-300">
+      <h3>2</h3>
+    </div>
+    <div className="w-full bg-blue-300">
+      <h3>3</h3>
+    </div>
+    <div className="w-full bg-red-300">
+      <h3>4</h3>
+    </div>
+    <div className="w-full bg-orange-300">
+      <h3>5</h3>
+    </div>
+    <div className="w-full bg-gray-300">
+      <h3>6</h3>
+    </div> */}
+    </Slider>
   );
 };
 
-export default Slider;
+export default ProductSlider;
