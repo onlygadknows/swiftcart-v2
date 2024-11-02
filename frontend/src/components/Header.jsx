@@ -2,6 +2,8 @@ import logo from "../assets/image/swift.png";
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaUserCircle } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -14,7 +16,8 @@ const Header = () => {
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("home");
 
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems, favItems } = useSelector((state) => state.cart);
+
   const { userInfo } = useSelector((state) => state.auth);
 
   const [isOpen, setIsOpen] = useState(false); // Set to false initially

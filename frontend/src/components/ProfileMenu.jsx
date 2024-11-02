@@ -8,6 +8,7 @@ import { useLogoutMutation } from "../slices/usersApiSlice";
 
 const ProfileMenu = ({ setIsOpen, isOpen, toggleMenu }) => {
   const { userInfo } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [logoutApiCall] = useLogoutMutation();
@@ -178,7 +179,7 @@ const ProfileMenu = ({ setIsOpen, isOpen, toggleMenu }) => {
         ) : (
           <Link
             to="/login"
-            className="block rounded-lg bg-gray-100 px-4 mt-6 py-2 text-sm font-poppins text-gray-700"
+            className="block rounded-lg bg-gray-100 border border-gray-300 px-4 mt-6 py-2 text-sm font-poppins text-gray-700"
             onClick={toggleMenu}
           >
             Sign in
