@@ -9,7 +9,7 @@ import { IoMdClose } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
-
+import Search from "./Search";
 const Header = () => {
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("home");
@@ -46,7 +46,7 @@ const Header = () => {
           </ul>
 
           {/* Center logo (remains fixed in the center) */}
-          <div className="flex items-center justify-center mr-8">
+          <div className="flex  items-center justify-center">
             <Link to="/">
               <img
                 className="w-12 hover:scale-105 transition-all"
@@ -59,12 +59,14 @@ const Header = () => {
 
           {/* Right-side nav links */}
           <ul className="relative hidden md:flex items-center gap-7">
-          <li>
+            <li>
+              <Search />
+            </li>
+            <li>
               <Link
                 to="/favorites"
                 className="font-poppins transition uppercase relative "
               >
-              
                 <MdFavoriteBorder className="w-6 h-6 text-gray-600 hover:text-black" />
               </Link>
             </li>
@@ -124,7 +126,7 @@ const Header = () => {
             ) : (
               <button
                 type="button"
-                className="hs-collapse-toggle relative size-10 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent"
+                className="hs-collapse-toggle relative size-10 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
                 id="hs-navbar-example-collapse"
                 onClick={() => setisMenuOpen(!isMenuOpen)}
                 aria-expanded="false"
@@ -147,9 +149,18 @@ const Header = () => {
             }`}
           >
             <ul className="w-full shadow-gray-700">
+              <li
+                className={`w-full flex items-center hover:bg-white hover:shadow-sm text-lg p-2 font-lora font-semibold text-gray-700 ${
+                  isMenuOpen && activeMenu === "Home"
+                    ? "bg-white shadow-md"
+                    : ""
+                }`}
+              >
+                <Search />
+              </li>
               <Link to="/">
                 <li
-                  className={`w-full flex items-center hover:bg-white hover:shadow-sm text-lg p-2 font-lora font-semibold text-gray-700 ${
+                  className={`w-full  text-lg p-2 font-lora font-semibold text-gray-700 ${
                     isMenuOpen && activeMenu === "Home"
                       ? "bg-white shadow-md"
                       : ""
@@ -159,7 +170,7 @@ const Header = () => {
                     setisMenuOpen(!isMenuOpen);
                   }}
                 >
-                  Home
+                  <p className="text-center">Home</p>
                 </li>
               </Link>
               <Link to="/">
@@ -174,7 +185,7 @@ const Header = () => {
                     setisMenuOpen(!isMenuOpen);
                   }}
                 >
-                  Shop
+                  <p className="text-center">Shop</p>
                 </li>
               </Link>
               <Link to="/login">
@@ -187,18 +198,24 @@ const Header = () => {
                   onClick={() => {
                     setActiveMenu("login");
                     setisMenuOpen(!isMenuOpen);
-                    toggleMenu()
+                    toggleMenu();
                   }}
                 >
-                  {userInfo ? `Hello, ${userInfo.name}!` : "Sign In"}
-                  
+                  <p className="text-center">
+                    {" "}
+                    {userInfo ? `Hello, ${userInfo.name}!` : "Sign In"}
+                  </p>
                 </li>
               </Link>
             </ul>
           </div>
         </div>
       </nav>
-      <ProfileMenu setIsOpen={setIsOpen} isOpen={isOpen} toggleMenu={toggleMenu} />
+      <ProfileMenu
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+        toggleMenu={toggleMenu}
+      />
     </header>
   );
 };

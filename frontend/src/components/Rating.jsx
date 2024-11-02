@@ -48,7 +48,7 @@ const Rating = ({ value, text }) => {
           <FaRegStar className="h-10 w-5" />
         )}
       </span>
-      <span className="px-1 bg-orange-400 text-white font-poppins rounded-md ml-1 text-sm">{value}</span>
+      <span className="px-1 bg-orange-400 text-white font-poppins rounded-md ml-1 text-sm">{value.toFixed(1)}</span>
     </div>
   );
 };

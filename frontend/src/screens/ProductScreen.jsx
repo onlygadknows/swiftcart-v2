@@ -9,10 +9,8 @@ import Rating from "../components/Rating";
 import Message from "../components/Message";
 import { FaHeart } from "react-icons/fa";
 import { FaShareAlt } from "react-icons/fa";
-
-import PropTypes from "prop-types";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faHeart, faShareAlt, faStar } from "@fortawesome/free-solid-svg-icons";
+import ProductReviewScreen from "./ProductReviewScreen";
+import Meta from "../components/Meta";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -42,8 +40,11 @@ const ProductScreen = () => {
   };
   return (
     <div className="w-full mb-5">
+            <Meta title="SwiftCart - Add to Cart" />
+
       {isLoading ? (
         <ProductLoader />
+        
       ) : error ? (
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 md:py-32 lg:max-w-7xl lg:px-8">
           <Message
@@ -53,6 +54,7 @@ const ProductScreen = () => {
         </div>
       ) : (
         <div className="mt-10 h-auto mx-auto max-w-2xl px-4 sm:px-6 sm:flex sm:justify-between sm:flex-col sm:gap-2 md:gap-1 lg:grid-rows-1 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-5">
+          
           <div
             key={product._id}
             className="col-start-1 flex items-center justify-center sm:mt-5 lg:mt-0 p-5 rounded-md"
@@ -61,7 +63,7 @@ const ProductScreen = () => {
               src={product.image}
               alt={product.name}
               draggable="false"
-              className="lg:h-[600px] object-cover rounded-lg"
+              className="lg:h-[400px] object-cover rounded-lg"
             />
           </div>
           <div className="col-start-2 flex flex-col justify-center rounded-md p-0 sm:p-5">
@@ -74,8 +76,8 @@ const ProductScreen = () => {
 
             <div className="h-auto w-full flex flex-col align-center justify-between mt-5 gap-5 md:pb-10 sm:flex-row">
               {/* left-column */}
-              <div className="flex align-center flex-col gap-0 justify-between flex-1">
-                <div className="flex align-center justify-center flex-col">
+              <div className="bg-gray-50 border-gray-300 flex align-center flex-col gap-0 justify-between border rounded-lg flex-1">
+                <div className="flex align-center justify-center  flex-col">
                   <h1 className="font-semibold text-gray-600 text-2xl text-center">
                     &#8369;{product.price}
                   </h1>
@@ -111,12 +113,12 @@ const ProductScreen = () => {
                     <select
                       value={qty}
                       onChange={(e) => setQty(Number(e.target.value))}
-                      className="py-3 px-4 pe-16 block w-full rounded-lg text-sm font-poppins focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     >
                       {product.countInStock > 0 ? (
                         <>
                           <option value="" disabled>
-                            Select Quantity
+                            Quantity
                           </option>{" "}
                           {/* Added value and disabled */}
                           {[...Array(product.countInStock).keys()].map((x) => (
@@ -152,91 +154,10 @@ const ProductScreen = () => {
             </div>
           </div>
         </div>
-
-        // <>
-        //   <section className="py-14 md:py-24 bg-white text-zinc-900 relative overflow-hidden z-10">
-        //     <div className="container px-4 mx-auto">
-        //       <div className="grid grid-cols-2 gap-6">
-        //         <div className="col-span-2 flex items-center justify-center lg:col-span-1">
-        //           <img
-        //             src={product.image}
-        //             alt={product.name}
-        //             draggable="false"
-        //             className="lg:h-[600px] object-cover rounded-lg"
-        //           />{" "}
-        //         </div>
-        //         <div className="col-span-2 lg:col-span-1">
-        //           <div className="mb-6 lg:mb-12">
-        //             <h1 className="text-2xl leading-none md:text-4xl font-poppins mb-4">
-        //               {product.name}
-        //             </h1>
-        //             <h3 className="text-2xl text-blue-600 font-medium">
-        //               {" "}
-        //               {product.price.toLocaleString("en-US", {
-        //                 style: "currency",
-        //                 currency: "PHP",
-        //               })}
-        //             </h3>
-        //             <div className="opacity-70 flex mb-6">
-        //               <Rating value={product.rating} />
-        //             </div>
-        //           </div>
-
-        //           <div>
-        //             <div className="mb-6">
-        //               <h5 className="font-medium mb-2">
-        //                 QTY {product.countInStock}
-        //               </h5>
-        //               <div className="h-11 border dark:border-slate-700 rounded-full flex w-36 relative mt-4 overflow-hidden">
-        //                 <button
-        //                   className="w-full pb-1 inline-flex justify-center items-center text-2xl font-medium border-r dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-20"
-        //                   type="button"
-        //                   onClick={() => setValue(parseInt(value) - 1)}
-        //                 >
-        //                   -
-        //                 </button>
-        //                 <input
-        //                   className="text-lg font-bold px-4 pl-5 py-1 inline-flex justify-center max-w-[60px] text-center bg-transparent focus:outline-none"
-        //                   type="number"
-        //                   placeholder=""
-        //                   value={value}
-        //                   onChange={(e) => setValue(e.target.value)}
-        //                 />
-        //                 <button
-        //                   className="w-full pb-1 inline-flex justify-center items-center text-2xl font-medium border-l dark:border-slate-700 text-blue-600 hover:bg-blue-600 hover:bg-opacity-10"
-        //                   type="button"
-        //                   onClick={() => setValue(parseInt(value) + 1)}
-        //                 >
-        //                   +
-        //                 </button>
-        //               </div>{" "}
-        //             </div>
-
-        //             <div className="flex items-center my-7">
-        //               <button className="bg-blue-600 border border-blue-600 text-white text-sm rounded uppercase hover:bg-opacity-90 px-10 py-2.5 mr-2">
-        //                 Buy Now
-        //               </button>
-        //               <button className="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white text-sm rounded uppercase px-6 py-2.5 mr-2">
-        //                 Add To Cart
-        //               </button>
-        // <button className="hover:bg-blue-600 rounded hover:bg-opacity-10 text-blue-600 mr-2 px-3 py-2 text-lg font-bold">
-        //   <FaHeart />
-        // </button>
-        // <button className="hover:bg-blue-600 rounded hover:bg-opacity-10 text-blue-600 px-3 py-2 text-lg font-bold">
-        //   <FaShareAlt />
-        // </button>
-        //             </div>
-
-        //             <p className="opacity-70 font-poppins lg:mr-56 xl:mr-80">
-        //               {product.description}
-        //             </p>
-        //           </div>
-        //         </div>
-        //       </div>
-        //     </div>
-        //   </section>
-        // </>
       )}
+      <>
+      <ProductReviewScreen productId={productId} />
+      </>
     </div>
   );
 };

@@ -111,13 +111,13 @@ const OrderScreen = () => {
 ) : (
     <div className="bg-white min-h-screen">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div className="mt-6 sm:mt-8 md:gap-2 lg:flex lg:items-start xl:gap-3 rounded-lg border p-4 flex-col">
+        <div className="mt-6 sm:mt-8 md:gap-2 lg:flex lg:items-start xl:gap-3 rounded-lg border bg-gray-50 border-gray-300  p-4 flex-col">
           <h2 className="text-xl font-lora font-semibold text-gray-700">
             Reference # {orderId}
           </h2>
         </div>
 
-        <div className="mt-6 sm:mt-8 md:gap-2 lg:flex lg:items-start xl:gap-3 rounded-lg border p-4 flex-col">
+        <div className="mt-6 sm:mt-8 md:gap-2 lg:flex lg:items-start xl:gap-3 rounded-lg border bg-gray-50 border-gray-300  p-4 flex-col">
           <h2 className="text-xl font-lora font-semibold text-gray-700">
             Shipping Details
           </h2>
@@ -202,7 +202,7 @@ const OrderScreen = () => {
           <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
             <div className="space-y-6">
               {order.orderItems.map((item, index) => (
-                <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm ">
+                <div className="rounded-lg border bg-gray-50 border-gray-300  p-4 shadow-sm ">
                   <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                     <Link
                       to={`/product/${item.product}`}
@@ -241,7 +241,7 @@ const OrderScreen = () => {
           </div>
 
           <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-            <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+            <div className="space-y-4 rounded-lg border bg-gray-50 border-gray-300  p-4 shadow-sm sm:p-6">
               <h1 className="text-xl font-lora font-semibold text-gray-700">
                 Order summary
               </h1>

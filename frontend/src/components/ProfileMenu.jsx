@@ -50,19 +50,16 @@ const ProfileMenu = ({ setIsOpen, isOpen, toggleMenu }) => {
         </button>
 
         {userInfo && (
-          <span className="grid h-10 w-full place-content-center rounded-lg bg-gray-100 text-md text-gray-700">
+          <span className="grid h-10 w-full place-content-center rounded-lg bg-gray-100 border-gray-300 border text-md font-lora text-gray-700">
             Hello, {userInfo.name}!
           </span>
         )}
         {userInfo && userInfo.isAdmin && (
           <ul className="mt-6 space-y-2">
             <li>
-              <a
-                href="#"
-                className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-poppins text-gray-700"
-              >
+              <p className="block rounded-lg border-gray-300 border bg-gray-100 font-lora px-4 py-2 text-sm s text-gray-700">
                 Dashboard
-              </a>
+              </p>
             </li>
             <li>
               <details className="group [&_summary::-webkit-details-marker]:hidden">
@@ -122,12 +119,9 @@ const ProfileMenu = ({ setIsOpen, isOpen, toggleMenu }) => {
         {userInfo ? (
           <ul className="mt-6 space-y-2">
             <li>
-              <a
-                href="#"
-                className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-poppins text-gray-700"
-              >
+              <p className="block rounded-lg font-lora bg-gray-100 border border-gray-300 px-4 py-2 text-sm text-gray-700">
                 General
-              </a>
+              </p>
             </li>
             {/* Other Links */}
             <li>

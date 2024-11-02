@@ -30,14 +30,14 @@ const PaymentScreen = () => {
       <div class="bg-white py-8 antialiased  md:py-16">
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <div class="mx-auto max-w-5xl">
-            <h2 class="text-xl font-semibold text-gray-600 sm:text-2xl">
+            <h2 class="text-xl font-semibold text-center text-gray-600 sm:text-2xl">
               Payment & Shipping Details
             </h2>
 
-            <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12">
-              <div class="mt-6 grow sm:mt-8 lg:mt-0">
-                <div class="space-y-4 rounded-lg border border-gray-100 p-6">
-                  <div class="space-y-2">
+            <div class="mt-6 sm:mt-8 lg:flex lg:items-start w-[50%] m-auto lg:gap-12 ">
+              <div class="mt-6 grow sm:mt-8 lg:mt-0 ">
+                <div class="space-y-4 rounded-lg bg-gray-50 border-gray-300 border p-6">
+                  <div class="space-y-2 ">
                     <div class="flex items-center justify-between gap-4">
                       <p class="font-normal font-poppins text-gray-500 ">
                         Address

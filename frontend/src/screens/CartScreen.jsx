@@ -3,10 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToCart,
-  removeFromCart,
-} from "../slices/cartSlice";
+import { useGetTopProductsQuery } from "../slices/productsApiSlice";
+import { AiOutlineLoading } from "react-icons/ai";
+import Meta from "../components/Meta";
+import { addToCart, removeFromCart } from "../slices/cartSlice";
 
 import CheckoutSteps from "../components/CheckoutSteps";
 const CartScreen = () => {
@@ -14,6 +14,7 @@ const CartScreen = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const { cartItems, favItems } = cart;
+  const { data: products, isLoading, error } = useGetTopProductsQuery();
 
   const addToCartHandler = async (product, qty) => {
     dispatch(
@@ -23,7 +24,6 @@ const CartScreen = () => {
       })
     );
   };
-
 
   const removeFromCartHandler = async (id) => {
     dispatch(removeFromCart(id));
@@ -37,6 +37,8 @@ const CartScreen = () => {
     <div className="bg-white min-h-screen">
       {/* Steps */}
       <CheckoutSteps step1 />
+      <Meta title="SwiftCart - Add to Cart" />
+
       {/* Shopping cart section */}
       <div className="mx-auto max-w-2xl px-4 sm:px-6 sm:py-11 md:py-10 lg:max-w-7xl lg:px-8">
         <h2 className="text-xl font-lora font-semibold text-gray-700">
@@ -51,7 +53,7 @@ const CartScreen = () => {
                 {cartItems.map((item) => (
                   <div
                     key={item._id}
-                    className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm "
+                    className="rounded-lg border bg-gray-50 border-gray-300 p-4 shadow-sm"
                   >
                     <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                       <Link
@@ -95,9 +97,8 @@ const CartScreen = () => {
                               <option disabled>Out of Stock</option> // Render out of stock as an option
                             )}
                           </select>
-                          <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-8"></div>
                         </div>
-                        <div className="text-end md:order-4 md:w-32">
+                        <div className="text-end md:order-4 md:w-32 ">
                           <p className="text-base font-lora text-green-600">
                             <span className="text-gray-700 font-semibold">
                               Item Price
@@ -154,38 +155,47 @@ const CartScreen = () => {
                   People also bought
                 </h3>
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:mt-8">
-                  {favItems.map((item) => (
-                    <div className="space-y-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-                      <Link
-                        to={`/product/${item._id}`}
-                        className="overflow-hidden "
-                      >
-                        <img
-                          className="mx-auto rounded-sm h-44 w-auto max-w-full"
-                          src={item.image}
-                          alt="imac image"
-                        />
-                      </Link>
-                      <div className="flex flex-col">
-                        <Link
-                          to={`/product/${item._id}`}
-                          className="text-md md:text-md font-poppins h-10 text-gray-700 hover:underline"
-                        >
-                          {item.name}
-                        </Link>
-                      <div className="flex w-full">
-                      <Rating value={item.rating} />
-
-                      </div>
-                      </div>
-                    </div>
-                  ))}
+                  {isLoading ? (
+                   <>
+                   <AiOutlineLoading className="animate-spin" />
+                   </>
+                 
+                  ) : (
+                    <>
+                        {products.map((item) => (
+                        <div className="space-y-6 bg-gray-50 border-gray-300 overflow-hidden rounded-lg border p-6 shadow-sm">
+                          <Link
+                            to={`/product/${item._id}`}
+                            className="overflow-hidden "
+                          >
+                            <img
+                              className="mx-auto rounded-sm h-44 w-auto max-w-full"
+                              src={item.image}
+                              alt="imac image"
+                            />
+                          </Link>
+                          <div className="flex flex-col">
+                            <Link
+                              to={`/product/${item._id}`}
+                              className="text-md md:text-md font-poppins h-10 text-gray-700 hover:underline"
+                            >
+                              {item.name}
+                            </Link>
+                            <div className="flex w-full">
+                              <Rating value={item.rating} />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </>
+                  )}
+                
                 </div>
               </div>
             </div>
 
             <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-              <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+              <div className="space-y-4 rounded-lg border bg-gray-50 border-gray-300 p-4 shadow-sm sm:p-6">
                 <h1 className="text-xl font-lora font-semibold text-gray-700">
                   Order summary
                 </h1>
@@ -281,7 +291,7 @@ const CartScreen = () => {
                 </div>
               </div>
 
-              <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+              <div className="space-y-4 rounded-lg border bg-gray-50 border-gray-300 p-4 shadow-sm sm:p-6">
                 <form className="space-y-4">
                   <div>
                     <p className="mb-2 block text-xs font-poppins text-gray-700">

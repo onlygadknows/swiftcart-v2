@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/ProductListLoader.jsx";
 import Message from "../components/Message.jsx";
-import { useGetProductsQuery } from "../slices/productsApiSlice.js";
+import { useGetfavoriteProductsQuery } from "../slices/productsApiSlice.js";
 import { useSelector } from "react-redux";
 
 const FavoriteScreen = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  const { data: products, isLoading, error } = useGetfavoriteProductsQuery();
   const cart = useSelector((state) => state.cart);
   const { favItems } = cart;
   const navigate = useNavigate();
@@ -30,10 +30,7 @@ const FavoriteScreen = () => {
           </div>
         ) : error ? (
           <div className="mx-auto overflow-x-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 md:py-32 lg:max-w-7xl lg:px-8">
-            <Message
-              variant="alert"
-              message={"Unable to fetch Products 😌"}
-            />{" "}
+            <Message variant="alert" message={"Unable to fetch Products 😌"} />{" "}
           </div>
         ) : (
           <>

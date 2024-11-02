@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLoginMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
+import Meta from "../components/Meta";
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,7 +54,9 @@ const LoginScreen = () => {
 
   return (
     <div className="flex w-full items-center justify-center h-[80vh]">
-      <div className="bg-white p-8 rounded-lg shadow-none sm:shadow-lg max-w-sm w-full border-0 sm:border">
+      <Meta title="SwiftCart - Login" />
+
+      <div className="p-8 rounded-lg shadow-none sm:shadow-lg max-w-sm w-full border bg-gray-50 border-gray-300  sm:border">
         <h2 className="text-2xl font-lora text-center mb-4 text-gray-700">
           SwiftCart by Gad Ashell
         </h2>
@@ -69,7 +71,9 @@ const LoginScreen = () => {
             <input
               type="email"
               id="email"
-              className={`form-input w-full px-4 py-2 border ${errors.email ? "border-red-500" : ""} rounded-lg text-gray-700 focus:ring-blue-500`}
+              className={`form-input w-full px-4 py-2 border ${
+                errors.email ? "border-red-500" : ""
+              } rounded-lg text-gray-700 focus:ring-blue-500`}
               placeholder="gadashell@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -90,7 +94,9 @@ const LoginScreen = () => {
             <input
               type="password"
               id="password"
-              className={`form-input w-full px-4 py-2 border ${errors.password ? "border-red-500" : ""} rounded-lg text-gray-700 focus:ring-blue-500`}
+              className={`form-input w-full px-4 py-2 border ${
+                errors.password ? "border-red-500" : ""
+              } rounded-lg text-gray-700 focus:ring-blue-500`}
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -105,13 +111,13 @@ const LoginScreen = () => {
             type="submit"
             className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
-             {isLoading ? (
-                <span className="flex items-center justify-center">
+            {isLoading ? (
+              <span className="flex items-center justify-center">
                 Login
                 <AiOutlineLoading3Quarters className="animate-spin ml-2" />
               </span>
             ) : (
-             "Login"
+              "Login"
             )}
           </button>
           <p className="text-gray-600 text-xs text-center font-poppins mt-4">

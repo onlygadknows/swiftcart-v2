@@ -4,7 +4,7 @@ import CheckoutSteps from "../components/CheckoutSteps";
 import { Link, useNavigate } from "react-router-dom";
 import { useCreateOrderMutation } from "../slices/ordersApiSlice";
 import { clearCartItems } from "../slices/cartSlice";
-
+import Meta from "../components/Meta";
 import { LuLoader2 } from "react-icons/lu";
 
 import Message from "../components/Message";
@@ -46,9 +46,10 @@ const PlaceOrderScreen = () => {
   return (
     <div className="bg-white min-h-screen">
       <CheckoutSteps step1 step2 step3 step4 />
+      <Meta title="SwiftCart - Place Order" />
 
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div className="mt-6 sm:mt-8 md:gap-2 lg:flex lg:items-start xl:gap-3 rounded-lg border p-4 flex-col">
+        <div className="mt-6 sm:mt-8 md:gap-2 lg:flex lg:items-start xl:gap-3 rounded-lg bg-gray-50 border-gray-300 border p-4 flex-col">
           <h2 className="text-xl font-lora font-semibold text-gray-700">
             Shipping Details
           </h2>
@@ -94,7 +95,7 @@ const PlaceOrderScreen = () => {
                 {cartItems.map((item) => (
                   <div
                     key={item._id}
-                    className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm "
+                    className="rounded-lg border bg-gray-50 border-gray-300  p-4 shadow-sm "
                   >
                     <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                       <Link
@@ -139,13 +140,13 @@ const PlaceOrderScreen = () => {
             </div>
 
             <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-              <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+              <div className="space-y-4 rounded-lg border bg-gray-50 border-gray-300 p-4 shadow-sm sm:p-6">
                 <h1 className="text-xl font-lora font-semibold text-gray-700">
                   Order summary
                 </h1>
 
-                <div className="space-y-4">
-                  <div className="space-y-2">
+                <div className="space-y-4 ">
+                  <div className="space-y-2 ">
                     <div className="flex items-center justify-between gap-4">
                       <p className="text-base font-semibold font-lora text-gray-700">
                         No. Item(s)
