@@ -17,16 +17,16 @@ const HomeScreen = () => {
     <div className="bg-white w-full">
       <Meta title="SwiftCart v2 - Equip your inventory with ease!" />
 
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 md:py-10 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6  sm:py-24 md:py-10 lg:max-w-7xl lg:px-8">
         <h2 className="font-lora text-2xl font-semibold text-gray-700">
           Best sellers right here &#128513;
         </h2>
       </div>
-      <div className="mx-auto rounded-lg max-w-2xl px-4 py-16 sm:px-6 sm:py-5 md:py-10 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto rounded-lg max-w-2xl px-4 py-5 sm:px-6 sm:py-5 md:py-10 lg:max-w-7xl lg:px-8">
         <ProductSlider />
       </div>
 
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 md:py-10 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py-24 md:py-10 lg:max-w-7xl lg:px-8">
         <h2 className="font-lora text-2xl mb-4 font-semibold text-gray-700">
           Check our awesomesauce products &#128517;
         </h2>

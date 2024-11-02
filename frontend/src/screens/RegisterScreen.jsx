@@ -62,7 +62,7 @@ const RegisterScreen = () => {
     <div className="flex w-full items-center justify-center">
       <Meta title="SwiftCart - Register" />
 
-      <div className="bg-gray-50 border-gray-300  p-8 rounded-lg shadow-none sm:shadow-xl max-w-sm w-full border-0 sm:border">
+      <div className="bg-gray-50 border-gray-300  p-8 rounded-lg shadow-none sm:shadow-xl max-w-sm w-full border sm:border">
         <h2 className="text-2xl font-lora text-center mb-4 text-gray-700">
           Create a new account
         </h2>
