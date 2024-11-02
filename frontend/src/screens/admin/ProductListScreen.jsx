@@ -5,6 +5,7 @@ import Message from "../../components/Message";
 import { LuLoader2 } from "react-icons/lu";
 
 import {
+  useGetfavoriteProductsQuery,
   useGetProductsQuery,
   useCreateProductMutation,
   useDeleteProductMutation
@@ -12,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 
 const ProductListScreen = () => {
-  const { data: products, isLoading, refetch, error } = useGetProductsQuery();
+  const { data: products, isLoading, refetch, error } = useGetfavoriteProductsQuery();
   const [
     createProduct,
     { isLoading: loadingCreate, refetch: createProductRefetch },
@@ -105,7 +106,7 @@ const ProductListScreen = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {products?.map((product) => (
               <tr className="bg-white border-b">
                 <Link to={`/product/${product._id}`}>
                   <td
