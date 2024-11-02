@@ -29,9 +29,7 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
+
 app.get("/api/config/paypal", (req, res) =>
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
 );
