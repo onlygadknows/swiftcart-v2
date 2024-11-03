@@ -41,9 +41,9 @@ const Header = () => {
             </li>
             <li className="font-lora uppercase font-bold transition">
               {" "}
-              <Link className="text-gray-600 hover:text-black" to="/">
-                Shop
-              </Link>
+              <a className="text-gray-600 hover:text-black" target="blank_" href="https://www.linkedin.com/in/gadashellsususco/">
+                LinkedIn
+              </a>
             </li>
           </ul>
 
@@ -188,7 +188,7 @@ const Header = () => {
                   <p className="text-center">Home</p>
                 </li>
               </Link>
-              <Link to="/">
+              <a target="blank_" className="text-center" href="https://www.linkedin.com/in/gadashellsususco/">
                 <li
                   className={`w-full hover:bg-white hover:shadow-sm text-lg p-2 font-lora text-gray-700 font-semibold ${
                     isMenuOpen && activeMenu === "Shop"
@@ -200,9 +200,9 @@ const Header = () => {
                     setisMenuOpen(!isMenuOpen);
                   }}
                 >
-                  <p className="text-center">Shop</p>
+                LinkedIn
                 </li>
-              </Link>
+              </a>
               <Link to="/login">
                 <li
                   className={`w-full hover:bg-white hover:shadow-sm text-lg p-2 font-lora font-semibold text-gray-700 ${

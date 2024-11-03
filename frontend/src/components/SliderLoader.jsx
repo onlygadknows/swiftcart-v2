@@ -1,12 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const SliderLoader = () => {
   return (
-    <div className="mx-auto h-[300px] flex w-full bg-gray-200  items-center justify-center rounded-lg grayscale hover:grayscale-0">
+    <div className="mx-auto h-[300px] flex w-full bg-gray-200  items-center justify-center rounded-lg grayscale hover:grayscale-0"></div>
+  );
+};
 
-   
-  </div>
-  )
-}
-
-export default SliderLoader
+export default SliderLoader;
