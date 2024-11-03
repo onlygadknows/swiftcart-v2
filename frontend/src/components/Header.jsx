@@ -2,7 +2,7 @@ import logo from "../assets/image/swift.png";
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaUserCircle } from "react-icons/fa";
-import { FaRegHeart,FaHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -20,7 +20,7 @@ const Header = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
   const [isOpen, setIsOpen] = useState(false); // Set to false initially
-  console.log(favItems)
+  console.log(favItems);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -106,6 +106,16 @@ const Header = () => {
 
           {/* Mobile view */}
           <div className="md:hidden flex items-center justify-center gap-5">
+            <Link
+              to="/favorites"
+              className="font-poppins transition uppercase relative "
+            >
+              {favItems.length > 0 ? (
+                <FaHeart className="w-6 h-6 text-red-500 hover:text-black" />
+              ) : (
+                <FaRegHeart className="w-6 h-6 text-gray-600 hover:text-black" />
+              )}
+            </Link>
             <Link to="/cart" className="font-poppins uppercase relative">
               {cartItems.length > 0 && (
                 <div className="t-0 absolute left-4 bottom-3 animate-bounce">
@@ -127,7 +137,6 @@ const Header = () => {
                   className="text-slate-600"
                   style={{ fontSize: "30px", fontWeight: "normal" }}
                 />
-                <span class="sr-only">Toggle navigation</span>
               </button>
             ) : (
               <button
