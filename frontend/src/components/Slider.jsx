@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import SliderLoader from "./SliderLoader";
 const ProductSlider = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
 
@@ -58,7 +58,10 @@ const ProductSlider = () => {
     ],
   };
 
-  return (
+  return isLoading ? (
+    <SliderLoader />
+
+  ) : (
     <Slider {...settings}>
       {products?.map((product) => (
         <div className="max-w-sm flex  items-center justify-center  grayscale hover:grayscale-0">
@@ -81,24 +84,6 @@ const ProductSlider = () => {
           </div>
         </div>
       ))}
-      {/* <div className="w-full bg-blue-300">
-      <h3>1</h3>
-    </div>
-    <div className="w-full bg-pink-300">
-      <h3>2</h3>
-    </div>
-    <div className="w-full bg-blue-300">
-      <h3>3</h3>
-    </div>
-    <div className="w-full bg-red-300">
-      <h3>4</h3>
-    </div>
-    <div className="w-full bg-orange-300">
-      <h3>5</h3>
-    </div>
-    <div className="w-full bg-gray-300">
-      <h3>6</h3>
-    </div> */}
     </Slider>
   );
 };

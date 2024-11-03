@@ -3,12 +3,16 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="bg-black p-2">
-      <div className="text-center text-primary font-poppins">
-        Swift Cart v2.0 - Gad Ashell Sususco
+    <div className="bg-black p-2 m-3 rounded-lg">
+      <div className="text-center">
+        <p className="font-poppins text-gray-600 uppercase font-normal">
+          Swift Cart v2.0 - Gad Ashell Sususco
+        </p>
       </div>
       <div className="text-center text-primary font-poppins">
-        {currentYear} All rights reserved.
+        <p className="font-poppins text-gray-600 font-normal">
+          {currentYear} All rights reserved.
+        </p>
       </div>
     </div>
   );
